@@ -1,426 +1,471 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>i5s</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>i5s Panel</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    body{
-      background:#050505;
-      color:white;
-    }
+body{
+    background:#000;
+    color:white;
+}
 
-    nav{
-      width:100%;
-      height:70px;
-      border-bottom:1px solid #111;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:0 40px;
-    }
+/* NAVBAR */
+nav{
+    width:100%;
+    height:70px;
+    border-bottom:1px solid #111;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+}
 
-    .logo{
-      color:#00ff99;
-      font-size:48px;
-      font-weight:bold;
-    }
+.logo{
+    color:#00ff99;
+    font-size:42px;
+    font-weight:900;
+}
 
-    .nav-links{
-      display:flex;
-      gap:35px;
-    }
+.nav-links{
+    display:flex;
+    gap:35px;
+}
 
-    .nav-links a{
-      color:white;
-      text-decoration:none;
-      font-size:18px;
-    }
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+}
 
-    .container{
-      width:95%;
-      margin:auto;
-      margin-top:40px;
-      display:flex;
-      gap:30px;
-    }
+/* MAIN */
+.container{
+    display:flex;
+    gap:30px;
+    padding:30px;
+}
 
-    .left{
-      flex:2;
-    }
+.left{
+    flex:1;
+}
 
-    .right{
-      width:420px;
-    }
+.right{
+    width:360px;
+}
 
-    .balance{
-      width:100%;
-      height:160px;
-      border:2px solid #00ff99;
-      border-radius:20px;
-      padding:30px;
-      margin-bottom:30px;
-      background:linear-gradient(to right,#001b12,#021b10);
-    }
+/* BALANCE */
+.balance-box{
+    border:2px solid #00ff99;
+    background:#001a11;
+    border-radius:22px;
+    padding:28px;
+    margin-bottom:28px;
+}
 
-    .balance h2{
-      color:#aaa;
-      margin-bottom:10px;
-    }
+.balance-title{
+    color:#aaa;
+    font-size:18px;
+    margin-bottom:10px;
+}
 
-    .balance .money{
-      color:#00ff99;
-      font-size:60px;
-      font-weight:bold;
-    }
+.balance{
+    font-size:58px;
+    font-weight:900;
+    color:#00ff99;
+}
 
-    .plan{
-      border:2px solid #00ff99;
-      border-radius:20px;
-      padding:30px;
-      margin-bottom:25px;
-      background:#0a0a0a;
-      cursor:pointer;
-      transition:0.2s;
-    }
+/* CARDS */
+.card{
+    border:2px solid #00ff99;
+    border-radius:24px;
+    padding:30px;
+    margin-bottom:28px;
+    background:linear-gradient(to right,#00140d,#000);
+    cursor:pointer;
+    transition:0.2s;
+}
 
-    .plan:hover{
-      transform:scale(1.01);
-    }
+.card:hover{
+    transform:scale(1.01);
+}
 
-    .plan.active{
-      background:linear-gradient(to right,#001b12,#021b10);
-    }
+.top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-    .plan-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:20px;
-    }
+.plan{
+    font-size:64px;
+    font-weight:900;
+}
 
-    .plan-title{
-      font-size:52px;
-      font-weight:bold;
-    }
+.price{
+    color:#00ff99;
+    font-size:48px;
+    font-weight:900;
+}
 
-    .price{
-      color:#00ff99;
-      font-size:50px;
-      font-weight:bold;
-    }
+.desc{
+    color:#aaa;
+    margin-top:10px;
+    margin-bottom:25px;
+}
 
-    .desc{
-      color:#999;
-      margin-bottom:25px;
-      font-size:18px;
-    }
+.stats{
+    display:flex;
+    gap:20px;
+}
 
-    .info-boxes{
-      display:flex;
-      gap:15px;
-    }
+.stat-box{
+    width:120px;
+    height:95px;
+    background:#050505;
+    border:1px solid #222;
+    border-radius:14px;
+    padding:15px;
+}
 
-    .info{
-      border:1px solid #222;
-      padding:15px;
-      border-radius:12px;
-      width:120px;
-      background:#0f0f0f;
-    }
+.stat-title{
+    color:#777;
+    font-size:15px;
+}
 
-    .info span{
-      color:#777;
-      font-size:14px;
-    }
+.stat-value{
+    margin-top:10px;
+    font-size:42px;
+    font-weight:900;
+}
 
-    .info h3{
-      margin-top:10px;
-      font-size:28px;
-    }
+/* RIGHT PANEL */
+.panel{
+    background:#050505;
+    border:1px solid #151515;
+    border-radius:24px;
+    padding:28px;
+    position:sticky;
+    top:20px;
+}
 
-    .purchase{
-      background:#0b0b0b;
-      border:1px solid #222;
-      border-radius:20px;
-      padding:30px;
-      position:sticky;
-      top:20px;
-    }
+.panel h2{
+    font-size:52px;
+    margin-bottom:25px;
+    line-height:55px;
+}
 
-    .purchase h2{
-      margin-bottom:25px;
-      font-size:40px;
-    }
+input{
+    width:100%;
+    height:65px;
+    background:black;
+    border:1px solid #222;
+    border-radius:14px;
+    color:white;
+    padding:15px;
+    font-size:24px;
+    margin-bottom:20px;
+}
 
-    input{
-      width:100%;
-      height:70px;
-      background:black;
-      border:1px solid #222;
-      border-radius:12px;
-      color:white;
-      padding-left:20px;
-      font-size:28px;
-      margin-bottom:25px;
-    }
+.summary{
+    border:1px solid #222;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+}
 
-    .summary{
-      background:black;
-      border:1px solid #222;
-      border-radius:15px;
-      padding:20px;
-      margin-bottom:25px;
-    }
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+    font-size:26px;
+}
 
-    .summary-row{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:15px;
-      font-size:20px;
-    }
+.total{
+    color:#00ff99;
+    font-size:54px;
+    font-weight:900;
+}
 
-    .total{
-      color:#00ff99;
-      font-size:40px;
-      font-weight:bold;
-    }
+button{
+    width:100%;
+    height:70px;
+    border:none;
+    border-radius:16px;
+    background:#00ff99;
+    color:black;
+    font-size:34px;
+    font-weight:900;
+    cursor:pointer;
+    margin-top:15px;
+}
 
-    button{
-      width:100%;
-      height:75px;
-      border:none;
-      border-radius:14px;
-      background:#00ff99;
-      color:black;
-      font-size:28px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.2s;
-    }
+button:hover{
+    opacity:0.9;
+}
 
-    button:hover{
-      opacity:0.8;
-    }
+.section-title{
+    margin-top:25px;
+    margin-bottom:15px;
+    font-size:34px;
+    font-weight:900;
+}
 
-    .topup-box{
-      margin-top:20px;
-    }
+/* DISCORD */
+.discord-box{
+    background:#0d1117;
+    border:1px solid #1f2937;
+    padding:20px;
+    border-radius:16px;
+    margin-top:20px;
+}
 
-    .topup-title{
-      font-size:22px;
-      margin-bottom:10px;
-    }
+.discord-btn{
+    background:#5865F2;
+    color:white;
+}
 
-  </style>
+.small{
+    font-size:15px;
+    color:#888;
+    margin-top:8px;
+}
+</style>
 </head>
+
 <body>
 
-  <nav>
+<nav>
     <div class="logo">i5s</div>
 
     <div class="nav-links">
-      <a href="#">Dashboard</a>
-      <a href="#">Purchase</a>
-      <a href="#">Topup</a>
-      <a href="#">Subscribers</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Purchase</a>
+        <a href="#">Topup</a>
+        <a href="#">Subscribers</a>
     </div>
-  </nav>
+</nav>
 
-  <div class="container">
+<div class="container">
 
+    <!-- LEFT -->
     <div class="left">
 
-      <div class="balance">
-        <h2>Your Balance</h2>
-        <div class="money" id="balance">$0.00</div>
-      </div>
-
-      <div class="plan active" onclick="selectPlan('1d',35)">
-        <div class="plan-top">
-          <div class="plan-title">1d</div>
-          <div class="price">$35/h</div>
+        <div class="balance-box">
+            <div class="balance-title">Your Balance</div>
+            <div class="balance" id="balance">$0.00</div>
         </div>
 
-        <div class="desc">Access to all premium features</div>
+        <!-- 1D -->
+        <div class="card" onclick="selectPlan('1d',35)">
+            <div class="top">
+                <div class="plan">1d</div>
+                <div class="price">$35/h</div>
+            </div>
 
-        <div class="info-boxes">
-          <div class="info">
-            <span>Min Hours</span>
-            <h3>1h</h3>
-          </div>
+            <div class="desc">
+                Access to all premium features
+            </div>
 
-          <div class="info">
-            <span>Slots</span>
-            <h3>10</h3>
-          </div>
-        </div>
-      </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-title">Min Hours</div>
+                    <div class="stat-value">1</div>
+                </div>
 
-      <div class="plan" onclick="selectPlan('3d',20)">
-        <div class="plan-top">
-          <div class="plan-title">3d</div>
-          <div class="price">$20/h</div>
-        </div>
-
-        <div class="desc">Private deployment access</div>
-
-        <div class="info-boxes">
-          <div class="info">
-            <span>Min Hours</span>
-            <h3>1h</h3>
-          </div>
-
-          <div class="info">
-            <span>Slots</span>
-            <h3>5</h3>
-          </div>
-        </div>
-      </div>
-
-      <div class="plan" onclick="selectPlan('5d',15)">
-        <div class="plan-top">
-          <div class="plan-title">5d</div>
-          <div class="price">$15/h</div>
+                <div class="stat-box">
+                    <div class="stat-title">Slots</div>
+                    <div class="stat-value">10</div>
+                </div>
+            </div>
         </div>
 
-        <div class="desc">Basic premium access</div>
+        <!-- 3D -->
+        <div class="card" onclick="selectPlan('3d',20)">
+            <div class="top">
+                <div class="plan">3d</div>
+                <div class="price">$20/h</div>
+            </div>
 
-        <div class="info-boxes">
-          <div class="info">
-            <span>Min Hours</span>
-            <h3>1h</h3>
-          </div>
+            <div class="desc">
+                Private deployment access
+            </div>
 
-          <div class="info">
-            <span>Slots</span>
-            <h3>2</h3>
-          </div>
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-title">Min Hours</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-title">Slots</div>
+                    <div class="stat-value">5</div>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- 5D -->
+        <div class="card" onclick="selectPlan('5d',15)">
+            <div class="top">
+                <div class="plan">5d</div>
+                <div class="price">$15/h</div>
+            </div>
+
+            <div class="desc">
+                Basic premium access
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-title">Min Hours</div>
+                    <div class="stat-value">1</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-title">Slots</div>
+                    <div class="stat-value">3</div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
+    <!-- RIGHT -->
     <div class="right">
+        <div class="panel">
 
-      <div class="purchase">
-        <h2>Configure Purchase</h2>
+            <h2>Configure Purchase</h2>
 
-        <input type="number" id="hours" value="1" onchange="updateTotal()">
+            <input type="number" id="hours" value="1" min="1" oninput="updateTotal()">
 
-        <div class="summary">
+            <div class="summary">
+                <div class="summary-row">
+                    <span>Hours</span>
+                    <span id="hourText">1 hrs</span>
+                </div>
 
-          <div class="summary-row">
-            <span>Hours</span>
-            <span id="hoursText">1 hrs</span>
-          </div>
+                <div class="summary-row">
+                    <span>Price</span>
+                    <span id="priceText">$35</span>
+                </div>
 
-          <div class="summary-row">
-            <span>Price</span>
-            <span id="priceText">$35</span>
-          </div>
+                <div class="summary-row">
+                    <span>Total</span>
+                    <span class="total" id="total">$35</span>
+                </div>
+            </div>
 
-          <div class="summary-row total">
-            <span>Total</span>
-            <span id="total">$35</span>
-          </div>
+            <button onclick="purchase()">Purchase Now</button>
+
+            <!-- TOPUP -->
+            <div class="section-title">
+                Top Up Balance
+            </div>
+
+            <input type="number" id="topup" placeholder="Enter amount">
+
+            <button onclick="addBalance()">
+                Add Balance
+            </button>
+
+            <!-- DISCORD -->
+            <div class="discord-box">
+
+                <div style="font-size:28px;font-weight:900;margin-bottom:10px;">
+                    Discord Connect
+                </div>
+
+                <button class="discord-btn" onclick="connectDiscord()">
+                    Connect Discord
+                </button>
+
+                <div class="small">
+                    Connect your Discord account
+                </div>
+
+            </div>
 
         </div>
-
-        <button onclick="purchaseNow()">
-          Purchase Now
-        </button>
-
-        <div class="topup-box">
-          <div class="topup-title">Top Up Balance</div>
-
-          <input type="number" id="topupAmount" placeholder="Enter amount">
-
-          <button onclick="topup()">
-            Add Balance
-          </button>
-        </div>
-
-      </div>
-
     </div>
 
-  </div>
+</div>
 
-  <script>
+<script>
 
-    let selectedPrice = 35;
-    let balance = 0;
+let currentPrice = 35;
+let balance = 0;
 
-    function selectPlan(name,price){
+function selectPlan(name, price){
+    currentPrice = price;
+    updateTotal();
+}
 
-      selectedPrice = price;
+function updateTotal(){
 
-      document.querySelectorAll(".plan").forEach(plan=>{
-        plan.classList.remove("active");
-      });
+    let hours = parseInt(document.getElementById("hours").value) || 1;
 
-      event.currentTarget.classList.add("active");
+    document.getElementById("hourText").innerText = hours + " hrs";
 
-      updateTotal();
-    }
+    document.getElementById("priceText").innerText = "$" + currentPrice;
 
-    function updateTotal(){
+    document.getElementById("total").innerText =
+        "$" + (hours * currentPrice);
+}
 
-      const hours = document.getElementById("hours").value;
+function addBalance(){
 
-      const total = hours * selectedPrice;
+    let amount =
+        parseFloat(document.getElementById("topup").value);
 
-      document.getElementById("hoursText").innerText = hours + " hrs";
-      document.getElementById("priceText").innerText = "$" + selectedPrice;
-      document.getElementById("total").innerText = "$" + total;
-    }
-
-    function topup(){
-
-      const amount = parseFloat(document.getElementById("topupAmount").value);
-
-      if(!amount || amount <= 0){
+    if(!amount || amount <= 0){
         alert("Enter valid amount");
         return;
-      }
-
-      balance += amount;
-
-      document.getElementById("balance").innerText = "$" + balance.toFixed(2);
-
-      alert("Balance Added!");
-
-      document.getElementById("topupAmount").value = "";
     }
 
-    function purchaseNow(){
+    balance += amount;
 
-      const hours = parseInt(document.getElementById("hours").value);
+    document.getElementById("balance").innerText =
+        "$" + balance.toFixed(2);
 
-      const total = hours * selectedPrice;
+    document.getElementById("topup").value = "";
+}
 
-      if(balance < total){
+function purchase(){
+
+    let hours =
+        parseInt(document.getElementById("hours").value);
+
+    let total = hours * currentPrice;
+
+    if(balance < total){
         alert("Not enough balance");
         return;
-      }
-
-      balance -= total;
-
-      document.getElementById("balance").innerText = "$" + balance.toFixed(2);
-
-      alert("Purchase Successful!");
     }
 
-  </script>
+    balance -= total;
+
+    document.getElementById("balance").innerText =
+        "$" + balance.toFixed(2);
+
+    alert("Purchase Successful");
+}
+
+function connectDiscord(){
+
+    window.location.href =
+    "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=identify&response_type=token&redirect_uri=https://YOURSITE.com";
+
+}
+
+updateTotal();
+
+</script>
 
 </body>
 </html>
