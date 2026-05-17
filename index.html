@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>i5s Panel</title>
+<title>i5s Dashboard</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:Arial,sans-serif;
 }
 
 body{
@@ -19,14 +20,15 @@ body{
 }
 
 /* NAVBAR */
+
 nav{
     width:100%;
-    height:70px;
+    height:80px;
     border-bottom:1px solid #111;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    padding:0 30px;
+    justify-content:space-between;
+    padding:0 35px;
 }
 
 .logo{
@@ -35,238 +37,380 @@ nav{
     font-weight:900;
 }
 
-.nav-links{
+.right-nav{
     display:flex;
-    gap:35px;
+    align-items:center;
+    gap:18px;
 }
 
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-}
+/* TOPUP BUTTON */
 
-/* MAIN */
-.container{
-    display:flex;
-    gap:30px;
-    padding:30px;
-}
-
-.left{
-    flex:1;
-}
-
-.right{
-    width:360px;
-}
-
-/* BALANCE */
-.balance-box{
-    border:2px solid #00ff99;
-    background:#001a11;
-    border-radius:22px;
-    padding:28px;
-    margin-bottom:28px;
-}
-
-.balance-title{
-    color:#aaa;
-    font-size:18px;
-    margin-bottom:10px;
-}
-
-.balance{
-    font-size:58px;
-    font-weight:900;
-    color:#00ff99;
-}
-
-/* CARDS */
-.card{
-    border:2px solid #00ff99;
-    border-radius:24px;
-    padding:30px;
-    margin-bottom:28px;
-    background:linear-gradient(to right,#00140d,#000);
+.topup-btn{
+    background:#00ff99;
+    color:black;
+    border:none;
+    padding:12px 22px;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:800;
     cursor:pointer;
     transition:0.2s;
 }
 
-.card:hover{
-    transform:scale(1.01);
+.topup-btn:hover{
+    transform:scale(1.04);
 }
 
-.top{
+/* DISCORD USER */
+
+.discord-user{
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:14px;
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.discord-avatar{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#5865F2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    font-weight:900;
+}
+
+.discord-info{
+    line-height:1.2;
+}
+
+.discord-name{
+    font-size:15px;
+    font-weight:700;
+}
+
+.discord-tag{
+    font-size:12px;
+    color:#aaa;
+}
+
+/* MAIN */
+
+.main{
+    width:100%;
+    min-height:calc(100vh - 80px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* LOGIN CARD */
+
+.login-card{
+    width:520px;
+    background:linear-gradient(to bottom,#0b0b0b,#050505);
+    border:1px solid #151515;
+    border-radius:28px;
+    padding:50px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(0,255,153,0.08);
+}
+
+.login-card h1{
+    font-size:54px;
+    margin-bottom:18px;
+}
+
+.login-card p{
+    color:#888;
+    font-size:18px;
+    line-height:1.7;
+    margin-bottom:35px;
+}
+
+/* DISCORD BUTTON */
+
+.discord-connect{
+    width:100%;
+    height:74px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#5865F2,#7289DA);
+    color:white;
+    font-size:22px;
+    font-weight:800;
+    cursor:pointer;
+    transition:0.25s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+}
+
+.discord-connect:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 30px rgba(88,101,242,0.4);
+}
+
+.discord-icon{
+    font-size:28px;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    display:none;
+    width:100%;
+    padding:30px;
+}
+
+/* BALANCE */
+
+.balance-box{
+    background:linear-gradient(to right,#001a11,#000);
+    border:2px solid #00ff99;
+    border-radius:24px;
+    padding:28px;
+    margin-bottom:30px;
+}
+
+.balance-title{
+    color:#999;
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+.balance{
+    color:#00ff99;
+    font-size:52px;
+    font-weight:900;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:25px;
+}
+
+.card{
+    background:#050505;
+    border:1px solid #151515;
+    border-radius:24px;
+    padding:28px;
+    transition:0.2s;
+}
+
+.card:hover{
+    border-color:#00ff99;
+    transform:translateY(-2px);
+}
+
+.card-top{
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .plan{
-    font-size:64px;
+    font-size:48px;
     font-weight:900;
 }
 
 .price{
     color:#00ff99;
-    font-size:48px;
+    font-size:34px;
     font-weight:900;
 }
 
 .desc{
-    color:#aaa;
-    margin-top:10px;
-    margin-bottom:25px;
+    color:#888;
+    margin-top:12px;
+    margin-bottom:22px;
 }
 
 .stats{
     display:flex;
-    gap:20px;
+    gap:14px;
 }
 
-.stat-box{
-    width:120px;
-    height:95px;
-    background:#050505;
-    border:1px solid #222;
+.stat{
+    background:#0b0b0b;
+    border:1px solid #1a1a1a;
     border-radius:14px;
-    padding:15px;
+    padding:14px;
+    width:110px;
 }
 
 .stat-title{
-    color:#777;
-    font-size:15px;
+    color:#666;
+    font-size:13px;
 }
 
 .stat-value{
-    margin-top:10px;
-    font-size:42px;
+    margin-top:8px;
+    font-size:28px;
     font-weight:900;
 }
 
-/* RIGHT PANEL */
-.panel{
+/* TOPUP MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-box{
+    width:420px;
     background:#050505;
     border:1px solid #151515;
     border-radius:24px;
-    padding:28px;
-    position:sticky;
-    top:20px;
+    padding:30px;
 }
 
-.panel h2{
-    font-size:52px;
-    margin-bottom:25px;
-    line-height:55px;
+.modal-box h2{
+    font-size:34px;
+    margin-bottom:20px;
 }
 
 input{
     width:100%;
-    height:65px;
-    background:black;
-    border:1px solid #222;
+    height:62px;
+    background:#0b0b0b;
+    border:1px solid #1f1f1f;
     border-radius:14px;
+    padding:14px;
     color:white;
-    padding:15px;
-    font-size:24px;
-    margin-bottom:20px;
+    font-size:20px;
+    margin-bottom:18px;
 }
 
-.summary{
-    border:1px solid #222;
-    border-radius:18px;
-    padding:20px;
-    margin-bottom:20px;
-}
-
-.summary-row{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:14px;
-    font-size:26px;
-}
-
-.total{
-    color:#00ff99;
-    font-size:54px;
-    font-weight:900;
-}
-
-button{
+.pay-btn{
     width:100%;
-    height:70px;
-    border:none;
-    border-radius:16px;
+    height:64px;
     background:#00ff99;
     color:black;
-    font-size:34px;
+    border:none;
+    border-radius:16px;
+    font-size:22px;
     font-weight:900;
     cursor:pointer;
-    margin-top:15px;
 }
 
-button:hover{
-    opacity:0.9;
-}
-
-.section-title{
-    margin-top:25px;
-    margin-bottom:15px;
-    font-size:34px;
-    font-weight:900;
-}
-
-/* DISCORD */
-.discord-box{
-    background:#0d1117;
-    border:1px solid #1f2937;
-    padding:20px;
-    border-radius:16px;
-    margin-top:20px;
-}
-
-.discord-btn{
-    background:#5865F2;
+.close-btn{
+    margin-top:12px;
+    width:100%;
+    height:56px;
+    border:none;
+    background:#111;
     color:white;
+    border-radius:14px;
+    cursor:pointer;
 }
 
-.small{
-    font-size:15px;
-    color:#888;
-    margin-top:8px;
-}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+
 <nav>
+
     <div class="logo">i5s</div>
 
-    <div class="nav-links">
-        <a href="#">Dashboard</a>
-        <a href="#">Purchase</a>
-        <a href="#">Topup</a>
-        <a href="#">Subscribers</a>
-    </div>
-</nav>
+    <div class="right-nav">
 
-<div class="container">
+        <button class="topup-btn" onclick="openTopup()">
+            + Top Up
+        </button>
 
-    <!-- LEFT -->
-    <div class="left">
+        <div class="discord-user">
 
-        <div class="balance-box">
-            <div class="balance-title">Your Balance</div>
-            <div class="balance" id="balance">$0.00</div>
+            <div class="discord-avatar">
+                D
+            </div>
+
+            <div class="discord-info">
+                <div class="discord-name">
+                    DiscordUser
+                </div>
+
+                <div class="discord-tag">
+                    #1234
+                </div>
+            </div>
+
         </div>
 
+    </div>
+
+</nav>
+
+<!-- LOGIN -->
+
+<div class="main" id="loginScreen">
+
+    <div class="login-card">
+
+        <h1>Welcome to i5s</h1>
+
+        <p>
+            Secure premium access dashboard.<br>
+            Connect your Discord account to continue.
+        </p>
+
+        <button class="discord-connect" onclick="connectDiscord()">
+
+            <span class="discord-icon">🎮</span>
+
+            Continue with Discord
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- DASHBOARD -->
+
+<div class="dashboard" id="dashboard">
+
+    <div class="balance-box">
+
+        <div class="balance-title">
+            Your Balance
+        </div>
+
+        <div class="balance" id="balance">
+            $0.00
+        </div>
+
+    </div>
+
+    <div class="grid">
+
         <!-- 1D -->
-        <div class="card" onclick="selectPlan('1d',35)">
-            <div class="top">
+
+        <div class="card">
+
+            <div class="card-top">
+
                 <div class="plan">1d</div>
+
                 <div class="price">$35/h</div>
+
             </div>
 
             <div class="desc">
@@ -274,23 +418,31 @@ button:hover{
             </div>
 
             <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-title">Min Hours</div>
+
+                <div class="stat">
+                    <div class="stat-title">Hours</div>
                     <div class="stat-value">1</div>
                 </div>
 
-                <div class="stat-box">
+                <div class="stat">
                     <div class="stat-title">Slots</div>
                     <div class="stat-value">10</div>
                 </div>
+
             </div>
+
         </div>
 
         <!-- 3D -->
-        <div class="card" onclick="selectPlan('3d',20)">
-            <div class="top">
+
+        <div class="card">
+
+            <div class="card-top">
+
                 <div class="plan">3d</div>
+
                 <div class="price">$20/h</div>
+
             </div>
 
             <div class="desc">
@@ -298,23 +450,31 @@ button:hover{
             </div>
 
             <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-title">Min Hours</div>
+
+                <div class="stat">
+                    <div class="stat-title">Hours</div>
                     <div class="stat-value">1</div>
                 </div>
 
-                <div class="stat-box">
+                <div class="stat">
                     <div class="stat-title">Slots</div>
                     <div class="stat-value">5</div>
                 </div>
+
             </div>
+
         </div>
 
         <!-- 5D -->
-        <div class="card" onclick="selectPlan('5d',15)">
-            <div class="top">
+
+        <div class="card">
+
+            <div class="card-top">
+
                 <div class="plan">5d</div>
+
                 <div class="price">$15/h</div>
+
             </div>
 
             <div class="desc">
@@ -322,148 +482,107 @@ button:hover{
             </div>
 
             <div class="stats">
-                <div class="stat-box">
-                    <div class="stat-title">Min Hours</div>
+
+                <div class="stat">
+                    <div class="stat-title">Hours</div>
                     <div class="stat-value">1</div>
                 </div>
 
-                <div class="stat-box">
+                <div class="stat">
                     <div class="stat-title">Slots</div>
                     <div class="stat-value">3</div>
                 </div>
+
             </div>
+
         </div>
 
     </div>
 
-    <!-- RIGHT -->
-    <div class="right">
-        <div class="panel">
+</div>
 
-            <h2>Configure Purchase</h2>
+<!-- TOPUP MODAL -->
 
-            <input type="number" id="hours" value="1" min="1" oninput="updateTotal()">
+<div class="modal" id="topupModal">
 
-            <div class="summary">
-                <div class="summary-row">
-                    <span>Hours</span>
-                    <span id="hourText">1 hrs</span>
-                </div>
+    <div class="modal-box">
 
-                <div class="summary-row">
-                    <span>Price</span>
-                    <span id="priceText">$35</span>
-                </div>
+        <h2>Top Up Balance</h2>
 
-                <div class="summary-row">
-                    <span>Total</span>
-                    <span class="total" id="total">$35</span>
-                </div>
-            </div>
+        <input
+            type="number"
+            id="amount"
+            placeholder="Enter amount"
+        >
 
-            <button onclick="purchase()">Purchase Now</button>
+        <button class="pay-btn" onclick="addBalance()">
+            Add Balance
+        </button>
 
-            <!-- TOPUP -->
-            <div class="section-title">
-                Top Up Balance
-            </div>
+        <button class="close-btn" onclick="closeTopup()">
+            Cancel
+        </button>
 
-            <input type="number" id="topup" placeholder="Enter amount">
-
-            <button onclick="addBalance()">
-                Add Balance
-            </button>
-
-            <!-- DISCORD -->
-            <div class="discord-box">
-
-                <div style="font-size:28px;font-weight:900;margin-bottom:10px;">
-                    Discord Connect
-                </div>
-
-                <button class="discord-btn" onclick="connectDiscord()">
-                    Connect Discord
-                </button>
-
-                <div class="small">
-                    Connect your Discord account
-                </div>
-
-            </div>
-
-        </div>
     </div>
 
 </div>
 
 <script>
 
-let currentPrice = 35;
 let balance = 0;
 
-function selectPlan(name, price){
-    currentPrice = price;
-    updateTotal();
+/* DISCORD LOGIN */
+
+function connectDiscord(){
+
+    /* 실제 디스코드 OAuth 연결 */
+    /* 아래 링크에 Client ID 넣으면 됨 */
+
+    // window.location.href =
+    // "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=token&scope=identify";
+
+    /* 임시 테스트용 */
+
+    document.getElementById("loginScreen").style.display = "none";
+
+    document.getElementById("dashboard").style.display = "block";
+
 }
 
-function updateTotal(){
+/* TOPUP */
 
-    let hours = parseInt(document.getElementById("hours").value) || 1;
+function openTopup(){
 
-    document.getElementById("hourText").innerText = hours + " hrs";
+    document.getElementById("topupModal").style.display = "flex";
 
-    document.getElementById("priceText").innerText = "$" + currentPrice;
+}
 
-    document.getElementById("total").innerText =
-        "$" + (hours * currentPrice);
+function closeTopup(){
+
+    document.getElementById("topupModal").style.display = "none";
+
 }
 
 function addBalance(){
 
     let amount =
-        parseFloat(document.getElementById("topup").value);
+    parseFloat(document.getElementById("amount").value);
 
     if(!amount || amount <= 0){
+
         alert("Enter valid amount");
         return;
+
     }
 
     balance += amount;
 
     document.getElementById("balance").innerText =
-        "$" + balance.toFixed(2);
+    "$" + balance.toFixed(2);
 
-    document.getElementById("topup").value = "";
-}
-
-function purchase(){
-
-    let hours =
-        parseInt(document.getElementById("hours").value);
-
-    let total = hours * currentPrice;
-
-    if(balance < total){
-        alert("Not enough balance");
-        return;
-    }
-
-    balance -= total;
-
-    document.getElementById("balance").innerText =
-        "$" + balance.toFixed(2);
-
-    alert("Purchase Successful");
-}
-
-function connectDiscord(){
-
-    window.location.href =
-    "https://discord.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&scope=identify&response_type=token&redirect_uri=https://YOURSITE.com";
+    closeTopup();
 
 }
-
-updateTotal();
 
 </script>
 
