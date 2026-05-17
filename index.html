@@ -1,10 +1,422 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>i5s Vanish</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>i5s Vanish Store</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#050505;
+      color:white;
+    }
+
+    header{
+      height:70px;
+      background:#0d0d0d;
+      border-bottom:1px solid #1f1f1f;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 40px;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#00ff88;
+    }
+
+    nav{
+      display:flex;
+      gap:25px;
+    }
+
+    nav a{
+      color:#d9d9d9;
+      text-decoration:none;
+      font-size:15px;
+      transition:0.2s;
+    }
+
+    nav a:hover{
+      color:#00ff88;
+    }
+
+    .balance{
+      background:#0c1d14;
+      border:1px solid #00ff88;
+      margin:40px auto;
+      width:90%;
+      padding:30px;
+      border-radius:16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .balance h2{
+      font-size:18px;
+      color:#999;
+      margin-bottom:10px;
+    }
+
+    .balance .money{
+      font-size:42px;
+      font-weight:bold;
+      color:#00ff88;
+    }
+
+    .container{
+      width:90%;
+      margin:auto;
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:30px;
+    }
+
+    .plans{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .plan{
+      background:#0f0f0f;
+      border:1px solid #1d1d1d;
+      border-radius:18px;
+      padding:30px;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .plan:hover{
+      border:1px solid #00ff88;
+      transform:translateY(-2px);
+    }
+
+    .plan.active{
+      border:2px solid #00ff88;
+      background:linear-gradient(
+        135deg,
+        rgba(0,255,136,0.15),
+        rgba(0,0,0,0.9)
+      );
+    }
+
+    .plan-top{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+
+    .plan-name{
+      font-size:28px;
+      font-weight:bold;
+    }
+
+    .price{
+      font-size:32px;
+      color:#00ff88;
+      font-weight:bold;
+    }
+
+    .plan p{
+      color:#9f9f9f;
+      margin-bottom:20px;
+    }
+
+    .features{
+      display:flex;
+      gap:15px;
+    }
+
+    .feature-box{
+      background:#111;
+      border:1px solid #262626;
+      padding:14px;
+      border-radius:10px;
+      min-width:120px;
+    }
+
+    .feature-title{
+      color:#666;
+      font-size:13px;
+      margin-bottom:5px;
+    }
+
+    .feature-value{
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    .purchase-box{
+      background:#0f0f0f;
+      border:1px solid #1f1f1f;
+      border-radius:20px;
+      padding:30px;
+      height:fit-content;
+      position:sticky;
+      top:30px;
+    }
+
+    .purchase-box h2{
+      margin-bottom:25px;
+    }
+
+    .hours-input{
+      width:100%;
+      padding:14px;
+      background:#090909;
+      border:1px solid #2b2b2b;
+      border-radius:10px;
+      color:white;
+      margin-bottom:25px;
+      font-size:18px;
+    }
+
+    .summary{
+      background:#090909;
+      border-radius:14px;
+      padding:20px;
+      margin-bottom:20px;
+      border:1px solid #222;
+    }
+
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:15px;
+      color:#bdbdbd;
+    }
+
+    .summary-total{
+      display:flex;
+      justify-content:space-between;
+      font-size:24px;
+      font-weight:bold;
+      color:#00ff88;
+    }
+
+    .buy-btn{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:14px;
+      background:#00ff88;
+      color:black;
+      font-size:18px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .buy-btn:hover{
+      opacity:0.85;
+    }
+
+    @media(max-width:900px){
+
+      .container{
+        grid-template-columns:1fr;
+      }
+
+      header{
+        padding:0 20px;
+      }
+
+      nav{
+        display:none;
+      }
+
+      .balance{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to i5s Vanish</h1>
-  <p>Fashion Store Coming Soon</p>
+
+  <header>
+    <div class="logo">ATLAS</div>
+
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Purchase</a>
+      <a href="#">Topup</a>
+      <a href="#">Subscribers</a>
+    </nav>
+  </header>
+
+  <section class="balance">
+    <div>
+      <h2>Your Balance</h2>
+      <div class="money">$0.00</div>
+    </div>
+
+    <div style="font-size:40px;color:#00ff88;">$</div>
+  </section>
+
+  <div class="container">
+
+    <div class="plans">
+
+      <div class="plan active" data-price="35">
+        <div class="plan-top">
+          <div class="plan-name">UNIVERSAL</div>
+          <div class="price">$35/h</div>
+        </div>
+
+        <p>Access to all premium features</p>
+
+        <div class="features">
+          <div class="feature-box">
+            <div class="feature-title">Min Hours</div>
+            <div class="feature-value">1h</div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-title">Slots</div>
+            <div class="feature-value">10</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan" data-price="20">
+        <div class="plan-top">
+          <div class="plan-name">SWAN</div>
+          <div class="price">$20/h</div>
+        </div>
+
+        <p>Private deployment access</p>
+
+        <div class="features">
+          <div class="feature-box">
+            <div class="feature-title">Min Hours</div>
+            <div class="feature-value">1h</div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-title">Slots</div>
+            <div class="feature-value">5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan" data-price="15">
+        <div class="plan-top">
+          <div class="plan-name">ATLAS</div>
+          <div class="price">$15/h</div>
+        </div>
+
+        <p>Basic premium access</p>
+
+        <div class="features">
+          <div class="feature-box">
+            <div class="feature-title">Min Hours</div>
+            <div class="feature-value">6h</div>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-title">Slots</div>
+            <div class="feature-value">2</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="purchase-box">
+
+      <h2>Configure Purchase</h2>
+
+      <input
+        type="number"
+        value="1"
+        min="1"
+        class="hours-input"
+        id="hours"
+      />
+
+      <div class="summary">
+
+        <div class="summary-row">
+          <span>Hours</span>
+          <span id="hoursText">1 hrs</span>
+        </div>
+
+        <div class="summary-row">
+          <span>Price</span>
+          <span id="priceText">$35</span>
+        </div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <span id="total">$35</span>
+        </div>
+
+      </div>
+
+      <button class="buy-btn">
+        Purchase Now
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const plans = document.querySelectorAll('.plan');
+    const hoursInput = document.getElementById('hours');
+
+    const hoursText = document.getElementById('hoursText');
+    const priceText = document.getElementById('priceText');
+    const totalText = document.getElementById('total');
+
+    let currentPrice = 35;
+
+    function updatePrice(){
+
+      const hours = Number(hoursInput.value);
+
+      const total = hours * currentPrice;
+
+      hoursText.innerText = hours + ' hrs';
+      priceText.innerText = '$' + currentPrice;
+      totalText.innerText = '$' + total;
+    }
+
+    plans.forEach(plan => {
+
+      plan.addEventListener('click', () => {
+
+        plans.forEach(p => p.classList.remove('active'));
+
+        plan.classList.add('active');
+
+        currentPrice = Number(plan.dataset.price);
+
+        updatePrice();
+      });
+
+    });
+
+    hoursInput.addEventListener('input', updatePrice);
+
+    updatePrice();
+
+  </script>
+
 </body>
 </html>
