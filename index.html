@@ -1,515 +1,582 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>i5s</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>i5s</title>
 
-  <style>
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+body{
+    background:#050505;
+    color:white;
+}
 
-    body{
-      background:#050505;
-      color:white;
-    }
+/* LOGIN */
 
-    /* LOGIN */
+.auth-page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-    .login-screen{
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      gap:15px;
-    }
+.auth-box{
+    width:380px;
+    background:#0b0b0b;
+    border:1px solid #151515;
+    border-radius:20px;
+    padding:40px 30px;
+}
 
-    .logo{
-      font-size:64px;
-      font-weight:bold;
-      color:#00ff99;
-      margin-bottom:10px;
-    }
+.logo{
+    text-align:center;
+    font-size:72px;
+    font-weight:900;
+    color:#00ff99;
+    margin-bottom:35px;
+}
 
-    .login-screen input{
-      width:320px;
-      height:55px;
-      background:#0d0d0d;
-      border:1px solid #1d1d1d;
-      border-radius:14px;
-      padding:0 15px;
-      color:white;
-      font-size:15px;
-    }
+.input{
+    width:100%;
+    height:55px;
+    background:#0f0f0f;
+    border:1px solid #1f1f1f;
+    border-radius:14px;
+    padding:0 16px;
+    color:white;
+    font-size:15px;
+    outline:none;
+    margin-bottom:15px;
+}
 
-    .discord-btn{
-      width:320px;
-      height:55px;
-      border:none;
-      border-radius:14px;
-      background:linear-gradient(90deg,#5865f2,#7289da);
-      color:white;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.2s;
-    }
+.btn{
+    width:100%;
+    height:55px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:700;
+    transition:.2s;
+}
 
-    .discord-btn:hover{
-      transform:scale(1.02);
-    }
+.login-btn{
+    background:#00ff99;
+    color:black;
+    margin-top:5px;
+}
 
-    /* DASHBOARD */
+.login-btn:hover{
+    opacity:.9;
+}
 
-    .dashboard{
-      display:none;
-    }
+.discord-btn{
+    margin-top:15px;
+    background:#5865F2;
+    color:white;
+}
 
-    nav{
-      height:70px;
-      border-bottom:1px solid #111;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 30px;
-    }
+.small-register{
+    text-align:center;
+    margin-top:18px;
+    color:#999;
+    font-size:13px;
+}
 
-    .nav-logo{
-      font-size:44px;
-      color:#00ff99;
-      font-weight:bold;
-    }
+.small-register span{
+    color:#00ff99;
+    cursor:pointer;
+}
 
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
+/* PANEL */
 
-    .balance-box{
-      background:#0d0d0d;
-      border:1px solid #00ff99;
-      border-radius:12px;
-      padding:10px 16px;
-      color:#00ff99;
-      font-size:14px;
-    }
+.panel{
+    display:none;
+}
 
-    .user-box{
-      background:#111;
-      padding:10px 16px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+.topbar{
+    width:100%;
+    height:75px;
+    border-bottom:1px solid #131313;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 35px;
+}
 
-    .user-box img{
-      width:32px;
-      height:32px;
-      border-radius:50%;
-    }
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
 
-    .container{
-      padding:30px;
-      display:grid;
-      grid-template-columns:1fr 320px;
-      gap:25px;
-    }
+.brand{
+    font-size:52px;
+    font-weight:900;
+    color:#00ff99;
+}
 
-    /* PLANS */
+.balance-box{
+    background:#0f0f0f;
+    border:1px solid #1f1f1f;
+    padding:10px 18px;
+    border-radius:12px;
+    font-size:14px;
+    color:#00ff99;
+}
 
-    .plans{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:20px;
-    }
+.user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#0f0f0f;
+    padding:10px 16px;
+    border-radius:12px;
+    border:1px solid #1b1b1b;
+}
 
-    .plan{
-      background:linear-gradient(180deg,#07120d,#050505);
-      border:1px solid #00ff99;
-      border-radius:24px;
-      height:220px;
-      padding:22px;
-      cursor:pointer;
-      transition:0.2s;
+.user img{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+}
 
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-    }
+.main{
+    padding:30px;
+}
 
-    .plan:hover{
-      transform:translateY(-4px);
-      box-shadow:0 0 20px rgba(0,255,153,0.18);
-    }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
 
-    .plan-title{
-      font-size:38px;
-      font-weight:bold;
-    }
+.card{
+    background:#0a0a0a;
+    border:1px solid #00ff99;
+    border-radius:18px;
+    padding:25px;
+    min-height:200px;
+    position:relative;
+}
 
-    .plan-price{
-      font-size:30px;
-      color:#00ff99;
-      font-weight:bold;
-    }
+.card-title{
+    font-size:42px;
+    font-weight:900;
+}
 
-    /* SIDE */
+.card-price{
+    position:absolute;
+    top:25px;
+    right:25px;
+    font-size:34px;
+    font-weight:900;
+    color:#00ff99;
+}
 
-    .side{
-      background:#0c0c0c;
-      border:1px solid #1d1d1d;
-      border-radius:22px;
-      padding:22px;
-      height:fit-content;
-    }
+.buy-btn{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+    height:50px;
+    border:none;
+    border-radius:12px;
+    background:#00ff99;
+    color:black;
+    font-weight:800;
+    cursor:pointer;
+    font-size:16px;
+}
 
-    .side-title{
-      font-size:28px;
-      font-weight:bold;
-      margin-bottom:20px;
-    }
+.buy-btn:hover{
+    opacity:.9;
+}
 
-    .side input{
-      width:100%;
-      height:52px;
-      background:black;
-      border:1px solid #222;
-      border-radius:12px;
-      padding:0 15px;
-      color:white;
-      font-size:15px;
-      margin-bottom:14px;
-    }
+/* ADMIN */
 
-    .total{
-      margin:18px 0;
-      font-size:22px;
-      color:#00ff99;
-      font-weight:bold;
-    }
+.admin-panel{
+    margin-top:35px;
+    background:#0b0b0b;
+    border:1px solid #1a1a1a;
+    border-radius:18px;
+    padding:25px;
+}
 
-    .side button{
-      width:100%;
-      height:52px;
-      border:none;
-      border-radius:12px;
-      background:#00ff99;
-      color:black;
-      font-size:17px;
-      font-weight:bold;
-      cursor:pointer;
-      transition:0.2s;
-    }
+.admin-title{
+    font-size:22px;
+    margin-bottom:20px;
+    color:#00ff99;
+}
 
-    .side button:hover{
-      opacity:0.9;
-    }
+.row{
+    display:flex;
+    gap:12px;
+}
 
-    @media(max-width:1100px){
+.admin-btn{
+    width:180px;
+    background:#00ff99;
+    color:black;
+    font-weight:800;
+}
 
-      .container{
-        grid-template-columns:1fr;
-      }
+.hidden{
+    display:none;
+}
 
-      .plans{
-        grid-template-columns:1fr;
-      }
+@media(max-width:900px){
 
-    }
+.grid{
+    grid-template-columns:1fr;
+}
 
-  </style>
+.brand{
+    font-size:40px;
+}
+
+.topbar{
+    flex-direction:column;
+    height:auto;
+    padding:20px;
+    gap:15px;
+}
+
+}
+</style>
 </head>
 
 <body>
 
-  <!-- LOGIN -->
+<!-- LOGIN -->
 
-  <div class="login-screen" id="loginScreen">
+<div class="auth-page" id="authPage">
 
-    <div class="logo">i5s</div>
+    <div class="auth-box">
 
-    <input type="text" id="registerUser" placeholder="Create Username">
-    <input type="password" id="registerPass" placeholder="Create Password">
+        <div class="logo">i5s</div>
 
-    <button class="discord-btn" onclick="register()">
-      Create Account
-    </button>
+        <input class="input" id="loginUser" placeholder="Username">
+        <input class="input" id="loginPass" type="password" placeholder="Password">
 
-    <input type="text" id="loginUser" placeholder="Login Username">
-    <input type="password" id="loginPass" placeholder="Login Password">
-
-    <button class="discord-btn" onclick="login()">
-      Continue with Discord
-    </button>
-
-  </div>
-
-  <!-- DASHBOARD -->
-
-  <div class="dashboard" id="dashboard">
-
-    <nav>
-
-      <div class="nav-logo">
-        i5s
-      </div>
-
-      <div class="nav-right">
-
-        <div class="balance-box">
-          Balance:
-          $<span id="balanceTop">0</span>
-        </div>
-
-        <div class="user-box">
-          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png">
-          <span id="discordName">User</span>
-        </div>
-
-      </div>
-
-    </nav>
-
-    <div class="container">
-
-      <!-- PLANS -->
-
-      <div class="plans">
-
-        <div class="plan" onclick="selectPlan(35)">
-          <div class="plan-title">1d</div>
-          <div class="plan-price">$35/h</div>
-        </div>
-
-        <div class="plan" onclick="selectPlan(20)">
-          <div class="plan-title">3d</div>
-          <div class="plan-price">$20/h</div>
-        </div>
-
-        <div class="plan" onclick="selectPlan(15)">
-          <div class="plan-title">5d</div>
-          <div class="plan-price">$15/h</div>
-        </div>
-
-      </div>
-
-      <!-- SIDE -->
-
-      <div class="side">
-
-        <div class="side-title">
-          Purchase
-        </div>
-
-        <input type="number" id="hours" min="1" value="1">
-
-        <div class="total">
-          Total:
-          $<span id="total">35</span>
-        </div>
-
-        <button onclick="purchasePlan()">
-          Purchase Now
+        <button class="btn login-btn" onclick="login()">
+            Login
         </button>
 
-        <br><br>
-
-        <div class="side-title" style="font-size:24px;">
-          Admin Balance Add
-        </div>
-
-        <input type="text" id="targetUser" placeholder="Target Username">
-
-        <input type="password" id="adminKey" placeholder="Admin Key">
-
-        <input type="number" id="topupAmount" placeholder="Amount">
-
-        <button onclick="addBalance()">
-          Add Balance
+        <button class="btn discord-btn" onclick="discordLogin()">
+            Continue with Discord
         </button>
 
-      </div>
+        <div class="small-register">
+            계정이 없나요?
+            <span onclick="toggleRegister()">회원가입</span>
+        </div>
+
+        <!-- REGISTER -->
+
+        <div id="registerBox" class="hidden" style="margin-top:25px;">
+
+            <input class="input" id="regUser" placeholder="Create Username">
+            <input class="input" id="regPass" type="password" placeholder="Create Password">
+
+            <button class="btn login-btn" onclick="register()">
+                Create Account
+            </button>
+
+        </div>
 
     </div>
 
-  </div>
+</div>
 
-  <script>
+<!-- PANEL -->
 
-    let users = JSON.parse(localStorage.getItem("users")) || {};
+<div class="panel" id="panel">
 
-    let currentUser = "";
+    <div class="topbar">
 
-    let selectedPrice = 35;
+        <div class="top-left">
 
-    let balance = 0;
+            <div class="brand">i5s</div>
 
-    /* REGISTER */
+            <div class="balance-box">
+                Balance :
+                $<span id="balance">0</span>
+            </div>
 
-    function register(){
+        </div>
 
-      const user = document.getElementById("registerUser").value;
-      const pass = document.getElementById("registerPass").value;
+        <div class="user">
+            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+            <span id="usernameView">User</span>
+        </div>
 
-      if(!user || !pass){
-        alert("Fill all fields");
-        return;
-      }
+    </div>
 
-      if(users[user]){
-        alert("User already exists");
-        return;
-      }
+    <div class="main">
 
-      users[user] = {
-        password: pass,
-        balance: 0
-      };
+        <div class="grid">
 
-      localStorage.setItem("users", JSON.stringify(users));
+            <div class="card">
+                <div class="card-title">1d</div>
+                <div class="card-price">$35</div>
 
-      alert("Account Created");
+                <button class="buy-btn" onclick="buy(35,'1d')">
+                    Purchase
+                </button>
+            </div>
 
-    }
+            <div class="card">
+                <div class="card-title">3d</div>
+                <div class="card-price">$20</div>
 
-    /* LOGIN */
+                <button class="buy-btn" onclick="buy(20,'3d')">
+                    Purchase
+                </button>
+            </div>
 
-    function login(){
+            <div class="card">
+                <div class="card-title">5d</div>
+                <div class="card-price">$15</div>
 
-      const user = document.getElementById("loginUser").value;
-      const pass = document.getElementById("loginPass").value;
+                <button class="buy-btn" onclick="buy(15,'5d')">
+                    Purchase
+                </button>
+            </div>
 
-      if(!users[user]){
-        alert("User not found");
-        return;
-      }
+        </div>
 
-      if(users[user].password !== pass){
-        alert("Wrong password");
-        return;
-      }
+        <!-- ADMIN -->
 
-      currentUser = user;
+        <div class="admin-panel hidden" id="adminPanel">
 
-      balance = users[user].balance;
+            <div class="admin-title">
+                Admin Balance Control
+            </div>
 
-      document.getElementById("discordName").innerText = user;
+            <div class="row">
 
-      updateBalance();
+                <input class="input"
+                id="targetUser"
+                placeholder="Target Username">
 
-      document.getElementById("loginScreen").style.display = "none";
-      document.getElementById("dashboard").style.display = "block";
+                <input class="input"
+                id="amountAdd"
+                placeholder="Amount">
 
-    }
+                <button class="btn admin-btn"
+                onclick="adminAddBalance()">
+                    Add Money
+                </button>
 
-    /* PLAN */
+            </div>
 
-    function selectPlan(price){
+        </div>
 
-      selectedPrice = price;
+    </div>
 
-      updateTotal();
+</div>
 
-    }
+<script>
 
-    function updateTotal(){
+const ADMIN_KEY = "F1AX65DvCA45X"
 
-      const hours = Number(document.getElementById("hours").value);
+let users = JSON.parse(localStorage.getItem("users")) || {}
 
-      document.getElementById("total").innerText =
-        hours * selectedPrice;
-
-    }
+function toggleRegister(){
 
     document
-      .getElementById("hours")
-      .addEventListener("input", updateTotal);
+    .getElementById("registerBox")
+    .classList
+    .toggle("hidden")
 
-    /* PURCHASE */
+}
 
-    function purchasePlan(){
+function register(){
 
-      const total =
-        Number(document.getElementById("total").innerText);
+    const user =
+    document.getElementById("regUser").value
 
-      if(balance < total){
-        alert("Not enough balance");
-        return;
-      }
+    const pass =
+    document.getElementById("regPass").value
 
-      balance -= total;
+    if(!user || !pass){
 
-      users[currentUser].balance = balance;
+        alert("Fill all fields")
+        return
+    }
 
-      localStorage.setItem("users", JSON.stringify(users));
+    if(users[user]){
 
-      updateBalance();
+        alert("Username already exists")
+        return
+    }
 
-      alert("Purchase Complete");
+    users[user] = {
+        password: pass,
+        balance: 0
+    }
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    )
+
+    alert("Account created")
+
+}
+
+function login(){
+
+    const user =
+    document.getElementById("loginUser").value
+
+    const pass =
+    document.getElementById("loginPass").value
+
+    if(!users[user]){
+
+        alert("User not found")
+        return
+    }
+
+    if(users[user].password !== pass){
+
+        alert("Wrong password")
+        return
+    }
+
+    startSession(user)
+
+}
+
+function discordLogin(){
+
+    const discordName =
+    prompt("Discord Username")
+
+    if(!discordName) return
+
+    if(!users[discordName]){
+
+        users[discordName] = {
+            password: "discord",
+            balance: 0
+        }
+
+        localStorage.setItem(
+            "users",
+            JSON.stringify(users)
+        )
 
     }
 
-    /* ADMIN ADD BALANCE */
+    startSession(discordName)
 
-    function addBalance(){
+}
 
-      const adminKey =
-        document.getElementById("adminKey").value;
+function startSession(user){
 
-      if(adminKey !== "F1AX65DvCA45X"){
-        alert("Invalid Admin Key");
-        return;
-      }
+    localStorage.setItem("currentUser", user)
 
-      const target =
-        document.getElementById("targetUser").value;
+    document.getElementById("authPage").style.display = "none"
+    document.getElementById("panel").style.display = "block"
 
-      const amount =
-        Number(document.getElementById("topupAmount").value);
+    document.getElementById("usernameView").innerText = user
 
-      if(!users[target]){
-        alert("User not found");
-        return;
-      }
+    updateBalance()
 
-      if(amount <= 0){
-        return;
-      }
+    if(user === ADMIN_KEY){
 
-      users[target].balance += amount;
-
-      localStorage.setItem("users", JSON.stringify(users));
-
-      if(target === currentUser){
-
-        balance = users[target].balance;
-
-        updateBalance();
-
-      }
-
-      alert("Balance Added");
+        document
+        .getElementById("adminPanel")
+        .classList
+        .remove("hidden")
 
     }
 
-    /* UPDATE BALANCE */
+}
 
-    function updateBalance(){
+function updateBalance(){
 
-      document.getElementById("balanceTop").innerText =
-        balance;
+    const current =
+    localStorage.getItem("currentUser")
+
+    document.getElementById("balance").innerText =
+    users[current].balance
+
+}
+
+function buy(price,name){
+
+    const current =
+    localStorage.getItem("currentUser")
+
+    if(users[current].balance < price){
+
+        alert("Not enough balance")
+        return
+    }
+
+    users[current].balance -= price
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    )
+
+    updateBalance()
+
+    alert(name + " purchased")
+
+}
+
+function adminAddBalance(){
+
+    const target =
+    document.getElementById("targetUser").value
+
+    const amount =
+    Number(document.getElementById("amountAdd").value)
+
+    if(!users[target]){
+
+        alert("User not found")
+        return
+    }
+
+    users[target].balance += amount
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    )
+
+    alert("Balance added")
+
+}
+
+window.onload = () => {
+
+    const current =
+    localStorage.getItem("currentUser")
+
+    if(current && users[current]){
+
+        startSession(current)
 
     }
 
-  </script>
+}
+</script>
 
 </body>
 </html>
