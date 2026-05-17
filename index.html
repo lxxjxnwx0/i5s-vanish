@@ -1,260 +1,320 @@
+아니 그냥 전체 코드로 줘
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>i5s</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
     }
 
-    body {
-      background: #050505;
-      color: white;
+    body{
+      background:#050505;
+      color:white;
     }
 
-    .login-screen {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 20px;
+    /* LOGIN */
+
+    .login-screen{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:15px;
     }
 
-    .logo {
-      font-size: 60px;
-      font-weight: bold;
-      color: #00ff99;
+    .logo{
+      font-size:64px;
+      font-weight:bold;
+      color:#00ff99;
+      margin-bottom:10px;
     }
 
-    .discord-btn {
-      background: linear-gradient(90deg, #5865f2, #7289da);
-      border: none;
-      padding: 18px 40px;
-      border-radius: 16px;
-      color: white;
-      font-size: 18px;
-      cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 0 20px rgba(88,101,242,0.4);
+    .login-screen input{
+      width:320px;
+      height:55px;
+      background:#0d0d0d;
+      border:1px solid #1d1d1d;
+      border-radius:14px;
+      padding:0 15px;
+      color:white;
+      font-size:15px;
     }
 
-    .discord-btn:hover {
-      transform: scale(1.03);
+    .discord-btn{
+      width:320px;
+      height:55px;
+      border:none;
+      border-radius:14px;
+      background:linear-gradient(90deg,#5865f2,#7289da);
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
     }
 
-    .dashboard {
-      display: none;
+    .discord-btn:hover{
+      transform:scale(1.02);
     }
 
-    nav {
-      height: 70px;
-      border-bottom: 1px solid #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 30px;
+    /* DASHBOARD */
+
+    .dashboard{
+      display:none;
     }
 
-    .nav-left {
-      font-size: 42px;
-      font-weight: bold;
-      color: #00ff99;
+    nav{
+      height:70px;
+      border-bottom:1px solid #111;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 30px;
     }
 
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 20px;
+    .nav-logo{
+      font-size:44px;
+      color:#00ff99;
+      font-weight:bold;
     }
 
-    .balance-top {
-      background: #0c0c0c;
-      border: 1px solid #00ff99;
-      padding: 10px 18px;
-      border-radius: 12px;
-      color: #00ff99;
-      font-size: 15px;
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap:15px;
     }
 
-    .discord-user {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #111;
-      padding: 8px 14px;
-      border-radius: 12px;
+    .balance-box{
+      background:#0d0d0d;
+      border:1px solid #00ff99;
+      border-radius:12px;
+      padding:10px 16px;
+      color:#00ff99;
+      font-size:14px;
     }
 
-    .discord-user img {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
+    .user-box{
+      background:#111;
+      padding:10px 16px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
 
-    .container {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: 30px;
+    .user-box img{
+      width:32px;
+      height:32px;
+      border-radius:50%;
     }
 
-    .plans {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    .container{
+      padding:30px;
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:25px;
     }
 
-    .plan {
-      border: 1px solid #00ff99;
-      border-radius: 20px;
-      padding: 25px;
-      background: #07120d;
-      cursor: pointer;
-      transition: 0.2s;
+    /* PLANS */
+
+    .plans{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
     }
 
-    .plan:hover {
-      transform: translateY(-2px);
+    .plan{
+      background:linear-gradient(180deg,#07120d,#050505);
+      border:1px solid #00ff99;
+      border-radius:24px;
+      height:220px;
+      padding:22px;
+      cursor:pointer;
+      transition:0.2s;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
-    .plan-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .plan:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 20px rgba(0,255,153,0.18);
     }
 
-    .plan-title {
-      font-size: 32px;
-      font-weight: bold;
+    .plan-title{
+      font-size:38px;
+      font-weight:bold;
     }
 
-    .plan-price {
-      font-size: 28px;
-      color: #00ff99;
-      font-weight: bold;
+    .plan-price{
+      font-size:30px;
+      color:#00ff99;
+      font-weight:bold;
     }
 
-    .side-box {
-      background: #0c0c0c;
-      border-radius: 20px;
-      padding: 25px;
-      border: 1px solid #1d1d1d;
-      height: fit-content;
+    /* SIDE */
+
+    .side{
+      background:#0c0c0c;
+      border:1px solid #1d1d1d;
+      border-radius:22px;
+      padding:22px;
+      height:fit-content;
     }
 
-    .side-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      font-weight: bold;
+    .side-title{
+      font-size:28px;
+      font-weight:bold;
+      margin-bottom:20px;
     }
 
-    input {
-      width: 100%;
-      height: 55px;
-      background: black;
-      border: 1px solid #222;
-      border-radius: 12px;
-      padding: 0 15px;
-      color: white;
-      font-size: 16px;
-      margin-bottom: 15px;
+    .side input{
+      width:100%;
+      height:52px;
+      background:black;
+      border:1px solid #222;
+      border-radius:12px;
+      padding:0 15px;
+      color:white;
+      font-size:15px;
+      margin-bottom:14px;
     }
 
-    button {
-      width: 100%;
-      height: 55px;
-      border: none;
-      border-radius: 12px;
-      background: #00ff99;
-      color: black;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
+    .total{
+      margin:18px 0;
+      font-size:22px;
+      color:#00ff99;
+      font-weight:bold;
     }
 
-    button:hover {
-      opacity: 0.9;
+    .side button{
+      width:100%;
+      height:52px;
+      border:none;
+      border-radius:12px;
+      background:#00ff99;
+      color:black;
+      font-size:17px;
+      font-weight:bold;
+      cursor:pointer;
+      transition:0.2s;
     }
 
-    .total {
-      margin: 15px 0;
-      font-size: 22px;
-      color: #00ff99;
-      font-weight: bold;
+    .side button:hover{
+      opacity:0.9;
     }
+
+    @media(max-width:1100px){
+
+      .container{
+        grid-template-columns:1fr;
+      }
+
+      .plans{
+        grid-template-columns:1fr;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
 
   <!-- LOGIN -->
+
   <div class="login-screen" id="loginScreen">
+
     <div class="logo">i5s</div>
 
-    <button class="discord-btn" onclick="loginDiscord()">
+    <input type="text" id="registerUser" placeholder="Create Username">
+    <input type="password" id="registerPass" placeholder="Create Password">
+
+    <button class="discord-btn" onclick="register()">
+      Create Account
+    </button>
+
+    <input type="text" id="loginUser" placeholder="Login Username">
+    <input type="password" id="loginPass" placeholder="Login Password">
+
+    <button class="discord-btn" onclick="login()">
       Continue with Discord
     </button>
+
   </div>
 
   <!-- DASHBOARD -->
+
   <div class="dashboard" id="dashboard">
 
     <nav>
-      <div class="nav-left">i5s</div>
+
+      <div class="nav-logo">
+        i5s
+      </div>
 
       <div class="nav-right">
-        <div class="balance-top">
-          Balance: $<span id="balanceTop">0</span>
+
+        <div class="balance-box">
+          Balance:
+          $<span id="balanceTop">0</span>
         </div>
 
-        <div class="discord-user">
+        <div class="user-box">
           <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png">
-          <span id="discordName">Discord User</span>
+          <span id="discordName">User</span>
         </div>
+
       </div>
+
     </nav>
 
     <div class="container">
 
+      <!-- PLANS -->
+
       <div class="plans">
 
         <div class="plan" onclick="selectPlan(35)">
-          <div class="plan-top">
-            <div class="plan-title">1d</div>
-            <div class="plan-price">$35/h</div>
-          </div>
+          <div class="plan-title">1d</div>
+          <div class="plan-price">$35/h</div>
         </div>
 
         <div class="plan" onclick="selectPlan(20)">
-          <div class="plan-top">
-            <div class="plan-title">3d</div>
-            <div class="plan-price">$20/h</div>
-          </div>
+          <div class="plan-title">3d</div>
+          <div class="plan-price">$20/h</div>
         </div>
 
         <div class="plan" onclick="selectPlan(15)">
-          <div class="plan-top">
-            <div class="plan-title">5d</div>
-            <div class="plan-price">$15/h</div>
-          </div>
+          <div class="plan-title">5d</div>
+          <div class="plan-price">$15/h</div>
         </div>
 
       </div>
 
-      <div class="side-box">
-        <div class="side-title">Purchase</div>
+      <!-- SIDE -->
 
-        <input type="number" id="hours" value="1" min="1">
+      <div class="side">
+
+        <div class="side-title">
+          Purchase
+        </div>
+
+        <input type="number" id="hours" min="1" value="1">
 
         <div class="total">
-          Total: $<span id="total">35</span>
+          Total:
+          $<span id="total">35</span>
         </div>
 
         <button onclick="purchasePlan()">
@@ -264,8 +324,10 @@
         <br><br>
 
         <div class="side-title" style="font-size:24px;">
-          Top Up
+          Admin Balance Add
         </div>
+
+        <input type="text" id="targetUser" placeholder="Target Username">
 
         <input type="password" id="adminKey" placeholder="Admin Key">
 
@@ -274,81 +336,178 @@
         <button onclick="addBalance()">
           Add Balance
         </button>
+
       </div>
 
     </div>
+
   </div>
 
   <script>
 
+    let users = JSON.parse(localStorage.getItem("users")) || {};
+
+    let currentUser = "";
+
     let selectedPrice = 35;
+
     let balance = 0;
 
-    // 디스코드 로그인 시뮬레이션
-    function loginDiscord() {
+    /* REGISTER */
 
-      // 실제 연동용 URL
-      // 나중에 백엔드 연결 가능
+    function register(){
 
-      const username = prompt("Enter Discord Username");
+      const user = document.getElementById("registerUser").value;
+      const pass = document.getElementById("registerPass").value;
 
-      if(!username) return;
+      if(!user || !pass){
+        alert("Fill all fields");
+        return;
+      }
 
-      document.getElementById("discordName").innerText = username;
+      if(users[user]){
+        alert("User already exists");
+        return;
+      }
+
+      users[user] = {
+        password: pass,
+        balance: 0
+      };
+
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Account Created");
+
+    }
+
+    /* LOGIN */
+
+    function login(){
+
+      const user = document.getElementById("loginUser").value;
+      const pass = document.getElementById("loginPass").value;
+
+      if(!users[user]){
+        alert("User not found");
+        return;
+      }
+
+      if(users[user].password !== pass){
+        alert("Wrong password");
+        return;
+      }
+
+      currentUser = user;
+
+      balance = users[user].balance;
+
+      document.getElementById("discordName").innerText = user;
+
+      updateBalance();
 
       document.getElementById("loginScreen").style.display = "none";
       document.getElementById("dashboard").style.display = "block";
+
     }
 
-    function selectPlan(price) {
+    /* PLAN */
+
+    function selectPlan(price){
+
       selectedPrice = price;
+
       updateTotal();
+
     }
 
-    function updateTotal() {
-      const hours = document.getElementById("hours").value;
-      document.getElementById("total").innerText = hours * selectedPrice;
+    function updateTotal(){
+
+      const hours = Number(document.getElementById("hours").value);
+
+      document.getElementById("total").innerText =
+        hours * selectedPrice;
+
     }
 
-    document.getElementById("hours").addEventListener("input", updateTotal);
+    document
+      .getElementById("hours")
+      .addEventListener("input", updateTotal);
 
-    function purchasePlan() {
-      const total = Number(document.getElementById("total").innerText);
+    /* PURCHASE */
 
-      if(balance < total) {
+    function purchasePlan(){
+
+      const total =
+        Number(document.getElementById("total").innerText);
+
+      if(balance < total){
         alert("Not enough balance");
         return;
       }
 
       balance -= total;
+
+      users[currentUser].balance = balance;
+
+      localStorage.setItem("users", JSON.stringify(users));
+
       updateBalance();
 
       alert("Purchase Complete");
+
     }
 
-    function addBalance() {
+    /* ADMIN ADD BALANCE */
 
-      const key = document.getElementById("adminKey").value;
+    function addBalance(){
 
-      // 관리자 키
-      if(key !== "F1AX65DvCA45X") {
+      const adminKey =
+        document.getElementById("adminKey").value;
+
+      if(adminKey !== "i5s-owner"){
         alert("Invalid Admin Key");
         return;
       }
 
-      const amount = Number(document.getElementById("topupAmount").value);
+      const target =
+        document.getElementById("targetUser").value;
 
-      if(amount <= 0) return;
+      const amount =
+        Number(document.getElementById("topupAmount").value);
 
-      balance += amount;
+      if(!users[target]){
+        alert("User not found");
+        return;
+      }
 
-      updateBalance();
+      if(amount <= 0){
+        return;
+      }
 
-      document.getElementById("topupAmount").value = "";
+      users[target].balance += amount;
+
+      localStorage.setItem("users", JSON.stringify(users));
+
+      if(target === currentUser){
+
+        balance = users[target].balance;
+
+        updateBalance();
+
+      }
+
+      alert("Balance Added");
+
     }
 
-    function updateBalance() {
-      document.getElementById("balanceTop").innerText = balance;
+    /* UPDATE BALANCE */
+
+    function updateBalance(){
+
+      document.getElementById("balanceTop").innerText =
+        balance;
+
     }
 
   </script>
