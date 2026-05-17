@@ -27,19 +27,23 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    background:
+    radial-gradient(circle at top,#00ff9920,transparent 40%),
+    #050505;
 }
 
 .auth-box{
-    width:380px;
+    width:390px;
     background:#0b0b0b;
-    border:1px solid #151515;
-    border-radius:20px;
+    border:1px solid #1a1a1a;
+    border-radius:26px;
     padding:40px 30px;
+    box-shadow:0 0 40px rgba(0,255,153,.08);
 }
 
 .logo{
     text-align:center;
-    font-size:72px;
+    font-size:74px;
     font-weight:900;
     color:#00ff99;
     margin-bottom:35px;
@@ -58,6 +62,10 @@ body{
     margin-bottom:15px;
 }
 
+.input:focus{
+    border:1px solid #00ff99;
+}
+
 .btn{
     width:100%;
     height:55px;
@@ -65,18 +73,18 @@ body{
     border-radius:14px;
     cursor:pointer;
     font-size:17px;
-    font-weight:700;
+    font-weight:800;
     transition:.2s;
 }
 
 .login-btn{
     background:#00ff99;
     color:black;
-    margin-top:5px;
 }
 
 .login-btn:hover{
-    opacity:.9;
+    transform:translateY(-2px);
+    opacity:.95;
 }
 
 .small-register{
@@ -99,12 +107,13 @@ body{
 
 .topbar{
     width:100%;
-    height:75px;
-    border-bottom:1px solid #131313;
+    height:85px;
+    border-bottom:1px solid #111;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 35px;
+    padding:0 30px;
+    background:#070707;
 }
 
 .top-left{
@@ -113,87 +122,172 @@ body{
     gap:20px;
 }
 
+.top-right{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
 .brand{
-    font-size:52px;
+    font-size:60px;
     font-weight:900;
     color:#00ff99;
 }
 
 .balance-box{
-    background:#0f0f0f;
-    border:1px solid #1f1f1f;
-    padding:10px 18px;
-    border-radius:12px;
-    font-size:14px;
+    background:linear-gradient(135deg,#0a0a0a,#111);
+    border:1px solid #00ff99;
+    padding:12px 22px;
+    border-radius:18px;
+    min-width:170px;
+    box-shadow:0 0 20px rgba(0,255,153,.12);
+}
+
+.balance-title{
+    color:#888;
+    font-size:12px;
+}
+
+.balance-money{
+    margin-top:4px;
+    font-size:24px;
+    font-weight:900;
     color:#00ff99;
+}
+
+.topup-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#0c0c0c;
+    border:1px solid #1d1d1d;
+    border-radius:16px;
+    padding:8px;
+}
+
+.topup-input{
+    width:110px;
+    height:42px;
+    background:#090909;
+    border:1px solid #1f1f1f;
+    border-radius:10px;
+    color:white;
+    padding:0 12px;
+    outline:none;
+}
+
+.topup-btn{
+    height:42px;
+    padding:0 18px;
+    border:none;
+    border-radius:10px;
+    background:#00ff99;
+    color:black;
+    font-weight:800;
+    cursor:pointer;
 }
 
 .user{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
     background:#0f0f0f;
     padding:10px 16px;
-    border-radius:12px;
+    border-radius:16px;
     border:1px solid #1b1b1b;
 }
 
 .user img{
-    width:34px;
-    height:34px;
+    width:38px;
+    height:38px;
     border-radius:50%;
 }
 
+.user-name{
+    font-weight:700;
+}
+
+.user-rank{
+    color:#00ff99;
+    font-size:12px;
+    margin-top:2px;
+}
+
+/* MAIN */
+
 .main{
-    padding:30px;
+    padding:35px;
 }
 
 .grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:24px;
 }
 
 .card{
-    background:#0a0a0a;
+    background:
+    linear-gradient(180deg,#0a0a0a,#070707);
     border:1px solid #00ff99;
-    border-radius:18px;
-    padding:25px;
-    min-height:200px;
+    border-radius:24px;
+    padding:28px;
+    height:240px;
     position:relative;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 30px rgba(0,255,153,.12);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    background:#00ff9910;
+    border-radius:50%;
+    top:-80px;
+    right:-80px;
 }
 
 .card-title{
-    font-size:42px;
+    font-size:56px;
     font-weight:900;
+    position:relative;
+    z-index:2;
 }
 
 .card-price{
     position:absolute;
-    top:25px;
-    right:25px;
-    font-size:34px;
+    top:28px;
+    right:28px;
+    font-size:42px;
     font-weight:900;
     color:#00ff99;
+    z-index:2;
 }
 
 .buy-btn{
     position:absolute;
-    bottom:25px;
-    left:25px;
-    right:25px;
-    height:50px;
+    left:28px;
+    right:28px;
+    bottom:28px;
+    height:58px;
     border:none;
-    border-radius:12px;
+    border-radius:16px;
     background:#00ff99;
     color:black;
-    font-weight:800;
+    font-weight:900;
+    font-size:17px;
     cursor:pointer;
-    font-size:16px;
+    transition:.2s;
 }
 
 .buy-btn:hover{
-    opacity:.9;
+    transform:scale(1.02);
 }
 
 /* ADMIN */
@@ -201,48 +295,50 @@ body{
 .admin-panel{
     margin-top:35px;
     background:#0b0b0b;
-    border:1px solid #1a1a1a;
-    border-radius:18px;
-    padding:25px;
+    border:1px solid #1d1d1d;
+    border-radius:24px;
+    padding:28px;
 }
 
 .admin-title{
-    font-size:22px;
-    margin-bottom:20px;
+    font-size:24px;
+    font-weight:800;
     color:#00ff99;
+    margin-bottom:20px;
 }
 
 .row{
     display:flex;
-    gap:12px;
+    gap:15px;
 }
 
 .admin-btn{
     width:180px;
     background:#00ff99;
     color:black;
-    font-weight:800;
+    font-weight:900;
 }
 
 .hidden{
     display:none;
 }
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
 .grid{
     grid-template-columns:1fr;
-}
-
-.brand{
-    font-size:40px;
 }
 
 .topbar{
     flex-direction:column;
     height:auto;
     padding:20px;
-    gap:15px;
+    gap:20px;
+}
+
+.top-right{
+    width:100%;
+    flex-direction:column;
 }
 
 }
@@ -260,11 +356,13 @@ body{
 
         <div class="logo">i5s</div>
 
-        <!-- LOGIN FORM -->
+        <!-- LOGIN -->
 
         <div id="loginBox">
 
-            <input class="input" id="loginUser" placeholder="Username">
+            <input class="input"
+            id="loginUser"
+            placeholder="Username">
 
             <input class="input"
             id="loginPass"
@@ -284,7 +382,7 @@ body{
 
         </div>
 
-        <!-- REGISTER FORM -->
+        <!-- REGISTER -->
 
         <div id="registerBox" class="hidden">
 
@@ -325,55 +423,131 @@ body{
             <div class="brand">i5s</div>
 
             <div class="balance-box">
-                Balance :
-                $<span id="balance">0</span>
+
+                <div class="balance-title">
+                    Balance
+                </div>
+
+                <div class="balance-money">
+                    $<span id="balance">0</span>
+                </div>
+
             </div>
 
         </div>
 
-        <div class="user">
-            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
-            <span id="usernameView">User</span>
+        <div class="top-right">
+
+            <!-- TOPUP -->
+
+            <div class="topup-box">
+
+                <input
+                type="number"
+                id="topupAmount"
+                class="topup-input"
+                placeholder="$">
+
+                <button
+                class="topup-btn"
+                onclick="topup()">
+                    Add
+                </button>
+
+            </div>
+
+            <!-- USER -->
+
+            <div class="user">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png">
+
+                <div>
+
+                    <div class="user-name"
+                    id="usernameView">
+                        User
+                    </div>
+
+                    <div class="user-rank"
+                    id="rankView">
+                        MEMBER
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>
+
+    <!-- MAIN -->
 
     <div class="main">
 
         <div class="grid">
 
             <div class="card">
-                <div class="card-title">1d</div>
-                <div class="card-price">$35</div>
 
-                <button class="buy-btn" onclick="buy(35,'1d')">
+                <div class="card-title">
+                    1d
+                </div>
+
+                <div class="card-price">
+                    $35
+                </div>
+
+                <button
+                class="buy-btn"
+                onclick="buy(35,'1d')">
                     Purchase
                 </button>
+
             </div>
 
             <div class="card">
-                <div class="card-title">3d</div>
-                <div class="card-price">$20</div>
 
-                <button class="buy-btn" onclick="buy(20,'3d')">
+                <div class="card-title">
+                    3d
+                </div>
+
+                <div class="card-price">
+                    $20
+                </div>
+
+                <button
+                class="buy-btn"
+                onclick="buy(20,'3d')">
                     Purchase
                 </button>
+
             </div>
 
             <div class="card">
-                <div class="card-title">5d</div>
-                <div class="card-price">$15</div>
 
-                <button class="buy-btn" onclick="buy(15,'5d')">
+                <div class="card-title">
+                    5d
+                </div>
+
+                <div class="card-price">
+                    $15
+                </div>
+
+                <button
+                class="buy-btn"
+                onclick="buy(15,'5d')">
                     Purchase
                 </button>
+
             </div>
 
         </div>
 
         <!-- ADMIN PANEL -->
 
-        <div class="admin-panel hidden" id="adminPanel">
+        <div class="admin-panel hidden"
+        id="adminPanel">
 
             <div class="admin-title">
                 Admin Balance Control
@@ -381,17 +555,20 @@ body{
 
             <div class="row">
 
-                <input class="input"
+                <input
+                class="input"
                 id="targetUser"
                 placeholder="Target Username">
 
-                <input class="input"
+                <input
+                class="input"
                 id="amountAdd"
                 placeholder="Amount">
 
-                <button class="btn admin-btn"
+                <button
+                class="btn admin-btn"
                 onclick="adminAddBalance()">
-                    Add Money
+                    Add Balance
                 </button>
 
             </div>
@@ -459,7 +636,8 @@ function register(){
 
     users[user] = {
         password: pass,
-        balance: 0
+        balance: 0,
+        role: "MEMBER"
     }
 
     localStorage.setItem(
@@ -499,17 +677,30 @@ function login(){
 
 function startSession(user){
 
-    localStorage.setItem("currentUser", user)
+    localStorage.setItem(
+        "currentUser",
+        user
+    )
 
-    document.getElementById("authPage").style.display = "none"
+    document
+    .getElementById("authPage")
+    .style.display = "none"
 
-    document.getElementById("panel").style.display = "block"
+    document
+    .getElementById("panel")
+    .style.display = "block"
 
-    document.getElementById("usernameView").innerText = user
+    document
+    .getElementById("usernameView")
+    .innerText = user
 
     updateBalance()
 
     if(user === ADMIN_KEY){
+
+        document
+        .getElementById("rankView")
+        .innerText = "ADMIN"
 
         document
         .getElementById("adminPanel")
@@ -525,8 +716,43 @@ function updateBalance(){
     const current =
     localStorage.getItem("currentUser")
 
-    document.getElementById("balance").innerText =
+    document
+    .getElementById("balance")
+    .innerText =
     users[current].balance
+
+}
+
+function topup(){
+
+    const current =
+    localStorage.getItem("currentUser")
+
+    const amount =
+    Number(
+        document
+        .getElementById("topupAmount")
+        .value
+    )
+
+    if(amount <= 0){
+
+        alert("Invalid amount")
+        return
+    }
+
+    users[current].balance += amount
+
+    localStorage.setItem(
+        "users",
+        JSON.stringify(users)
+    )
+
+    updateBalance()
+
+    document
+    .getElementById("topupAmount")
+    .value = ""
 
 }
 
@@ -560,7 +786,9 @@ function adminAddBalance(){
     document.getElementById("targetUser").value
 
     const amount =
-    Number(document.getElementById("amountAdd").value)
+    Number(
+        document.getElementById("amountAdd").value
+    )
 
     if(!users[target]){
 
