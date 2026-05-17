@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>i5s</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -76,12 +77,6 @@ body{
 
 .login-btn:hover{
     opacity:.9;
-}
-
-.discord-btn{
-    margin-top:15px;
-    background:#5865F2;
-    color:white;
 }
 
 .small-register{
@@ -251,6 +246,7 @@ body{
 }
 
 }
+
 </style>
 </head>
 
@@ -264,32 +260,53 @@ body{
 
         <div class="logo">i5s</div>
 
-        <input class="input" id="loginUser" placeholder="Username">
-        <input class="input" id="loginPass" type="password" placeholder="Password">
+        <!-- LOGIN FORM -->
 
-        <button class="btn login-btn" onclick="login()">
-            Login
-        </button>
+        <div id="loginBox">
 
-        <button class="btn discord-btn" onclick="discordLogin()">
-            Continue with Discord
-        </button>
+            <input class="input" id="loginUser" placeholder="Username">
 
-        <div class="small-register">
-            계정이 없나요?
-            <span onclick="toggleRegister()">회원가입</span>
+            <input class="input"
+            id="loginPass"
+            type="password"
+            placeholder="Password">
+
+            <button class="btn login-btn" onclick="login()">
+                Login
+            </button>
+
+            <div class="small-register">
+                Don't have an account?
+                <span onclick="showRegister()">
+                    Sign Up
+                </span>
+            </div>
+
         </div>
 
-        <!-- REGISTER -->
+        <!-- REGISTER FORM -->
 
-        <div id="registerBox" class="hidden" style="margin-top:25px;">
+        <div id="registerBox" class="hidden">
 
-            <input class="input" id="regUser" placeholder="Create Username">
-            <input class="input" id="regPass" type="password" placeholder="Create Password">
+            <input class="input"
+            id="regUser"
+            placeholder="Create Username">
+
+            <input class="input"
+            id="regPass"
+            type="password"
+            placeholder="Create Password">
 
             <button class="btn login-btn" onclick="register()">
-                Create Account
+                Sign Up
             </button>
+
+            <div class="small-register">
+                Already have an account?
+                <span onclick="showLogin()">
+                    Login
+                </span>
+            </div>
 
         </div>
 
@@ -354,7 +371,7 @@ body{
 
         </div>
 
-        <!-- ADMIN -->
+        <!-- ADMIN PANEL -->
 
         <div class="admin-panel hidden" id="adminPanel">
 
@@ -389,14 +406,34 @@ body{
 
 const ADMIN_KEY = "F1AX65DvCA45X"
 
-let users = JSON.parse(localStorage.getItem("users")) || {}
+let users =
+JSON.parse(localStorage.getItem("users")) || {}
 
-function toggleRegister(){
+function showRegister(){
+
+    document
+    .getElementById("loginBox")
+    .classList
+    .add("hidden")
 
     document
     .getElementById("registerBox")
     .classList
-    .toggle("hidden")
+    .remove("hidden")
+
+}
+
+function showLogin(){
+
+    document
+    .getElementById("registerBox")
+    .classList
+    .add("hidden")
+
+    document
+    .getElementById("loginBox")
+    .classList
+    .remove("hidden")
 
 }
 
@@ -432,6 +469,8 @@ function register(){
 
     alert("Account created")
 
+    showLogin()
+
 }
 
 function login(){
@@ -458,36 +497,12 @@ function login(){
 
 }
 
-function discordLogin(){
-
-    const discordName =
-    prompt("Discord Username")
-
-    if(!discordName) return
-
-    if(!users[discordName]){
-
-        users[discordName] = {
-            password: "discord",
-            balance: 0
-        }
-
-        localStorage.setItem(
-            "users",
-            JSON.stringify(users)
-        )
-
-    }
-
-    startSession(discordName)
-
-}
-
 function startSession(user){
 
     localStorage.setItem("currentUser", user)
 
     document.getElementById("authPage").style.display = "none"
+
     document.getElementById("panel").style.display = "block"
 
     document.getElementById("usernameView").innerText = user
@@ -576,6 +591,7 @@ window.onload = () => {
     }
 
 }
+
 </script>
 
 </body>
