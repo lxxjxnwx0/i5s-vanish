@@ -6,384 +6,340 @@
 
 <title>i5s Store</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
 }
 
 body{
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
 
 body::before{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(255,0,0,0.12);
-    filter:blur(120px);
-    top:-200px;
-    left:-150px;
-    z-index:-1;
+content:'';
+position:fixed;
+top:-250px;
+left:-250px;
+width:600px;
+height:600px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+z-index:-1;
 }
 
 body::after{
-    content:'';
-    position:fixed;
-    width:500px;
-    height:500px;
-    background:rgba(255,0,0,0.12);
-    filter:blur(120px);
-    bottom:-200px;
-    right:-150px;
-    z-index:-1;
+content:'';
+position:fixed;
+bottom:-250px;
+right:-250px;
+width:600px;
+height:600px;
+background:rgba(255,0,0,.12);
+filter:blur(120px);
+z-index:-1;
 }
 
 .hidden{
-    display:none !important;
+display:none !important;
 }
 
 .login-screen{
-    width:100%;
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .login-box{
-    width:420px;
-    background:#0d0d0d;
-    border:1px solid #222;
-    border-radius:30px;
-    padding:45px;
-    box-shadow:0 0 40px rgba(255,0,0,0.15);
-}
-
-.logo-login,
-.logo{
-    font-family:'Orbitron',sans-serif;
-    font-weight:900;
-    background:linear-gradient(90deg,#ff2e2e,#ffffff);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
-
-.logo-login{
-    font-size:56px;
-    margin-bottom:10px;
+width:430px;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:30px;
+padding:40px;
+box-shadow:0 0 40px rgba(255,0,0,.15);
 }
 
 .logo{
-    font-size:38px;
+font-size:62px;
+font-weight:900;
+color:#ff2d2d;
+margin-bottom:10px;
 }
 
 .login-sub{
-    color:#777;
-    margin-bottom:25px;
+color:#777;
+margin-bottom:25px;
 }
 
 input{
-    width:100%;
-    height:58px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    padding:0 18px;
-    color:white;
-    margin-bottom:15px;
-    outline:none;
+width:100%;
+height:58px;
+background:#111;
+border:1px solid #222;
+border-radius:14px;
+padding:0 18px;
+color:white;
+font-size:16px;
+outline:none;
+margin-bottom:15px;
+}
+
+button{
+border:none;
+cursor:pointer;
+}
+
+.login-btn,
+.register-btn,
+.buy-btn,
+.topup-btn,
+.approve-btn,
+.reject-btn{
+border-radius:14px;
+font-weight:800;
+color:white;
 }
 
 .login-btn{
-    width:100%;
-    height:58px;
-    border:none;
-    border-radius:14px;
-    background:#ff2e2e;
-    color:white;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+width:100%;
+height:58px;
+background:#ff2d2d;
+margin-bottom:12px;
 }
 
 .register-btn{
-    text-align:center;
-    color:#999;
-    margin-top:18px;
-    cursor:pointer;
+width:100%;
+height:58px;
+background:#151515;
 }
 
 .navbar{
-    height:80px;
-    background:#080808;
-    border-bottom:1px solid #1b1b1b;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 28px;
+height:80px;
+background:#080808;
+border-bottom:1px solid #1f1f1f;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 25px;
+}
+
+.nav-logo{
+font-size:38px;
+font-weight:900;
+color:#ff2d2d;
 }
 
 .nav-right{
-    display:flex;
-    gap:12px;
-    align-items:center;
-    flex-wrap:wrap;
+display:flex;
+gap:10px;
+align-items:center;
+flex-wrap:wrap;
 }
 
-.balance,
-.nav-btn,
-.logout-btn{
-    height:44px;
-    padding:0 22px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    color:white;
-    font-weight:700;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.nav-btn{
+height:45px;
+padding:0 20px;
+background:#111;
+border:1px solid #222;
+border-radius:12px;
+color:white;
+cursor:pointer;
+font-weight:700;
 }
 
-.nav-btn,
-.logout-btn{
-    cursor:pointer;
+.nav-btn:hover{
+background:#ff2d2d;
 }
 
-.active-btn,
-.nav-btn:hover,
-.logout-btn:hover{
-    background:#ff2e2e;
-    border-color:#ff2e2e;
+.balance{
+height:45px;
+padding:0 20px;
+display:flex;
+align-items:center;
+background:#111;
+border:1px solid #222;
+border-radius:12px;
+font-weight:800;
 }
 
 .page{
-    display:none;
-    padding:35px;
+display:none;
+padding:30px;
 }
 
 .active-page{
-    display:block;
-}
-
-.hero{
-    background:linear-gradient(135deg,#090909,#190707);
-    border:1px solid #221111;
-    border-radius:30px;
-    padding:60px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:30px;
-    margin-bottom:35px;
-}
-
-.hero h1{
-    font-size:60px;
-    font-weight:900;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:18px;
-    color:#999;
-    max-width:700px;
-    line-height:1.7;
-}
-
-.hero img{
-    width:220px;
+display:block;
 }
 
 .section-title{
-    font-size:38px;
-    font-weight:900;
-    margin-bottom:25px;
+font-size:50px;
+font-weight:900;
+margin-bottom:30px;
 }
 
-.product-grid,
-.inventory-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.product-card,
-.inventory-item,
-.request-box{
-    background:#0b0b0b;
-    border:1px solid #1f1f1f;
-    border-radius:28px;
-    padding:30px;
+.product-card{
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:24px;
+padding:28px;
 }
 
-.product-card img{
-    width:70px;
-    margin-bottom:20px;
-}
-
-.product-card h3,
-.inventory-item h3{
-    font-size:32px;
-    margin-bottom:15px;
+.product-card h2{
+font-size:40px;
+margin-bottom:12px;
 }
 
 .price{
-    font-size:42px;
-    font-weight:900;
-    color:#ff2e2e;
-    margin-bottom:20px;
+font-size:46px;
+font-weight:900;
+color:#ff2d2d;
+margin-bottom:20px;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn,
-.reject-btn{
-    width:100%;
-    height:58px;
-    border:none;
-    border-radius:16px;
-    color:white;
-    font-size:16px;
-    font-weight:800;
-    cursor:pointer;
+.buy-btn{
+width:100%;
+height:55px;
+background:#ff2d2d;
 }
 
-.buy-btn,
-.create-payment-btn,
-.approve-btn{
-    background:#ff2e2e;
+.inventory-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:18px;
 }
 
-.reject-btn{
-    background:#222;
+.inventory-item{
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:20px;
+padding:25px;
 }
 
-.topup-container{
-    max-width:1000px;
-    margin:auto;
-    background:#0b0b0b;
-    border:1px solid #1f1f1f;
-    border-radius:30px;
-    padding:45px;
+.inventory-item h3{
+font-size:28px;
+margin-bottom:10px;
 }
 
-.topup-container h1{
-    font-size:58px;
-    margin-bottom:10px;
-}
-
-.topup-container p{
-    color:#888;
-    margin-bottom:30px;
+.topup-box{
+max-width:950px;
+margin:auto;
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:30px;
+padding:35px;
 }
 
 .crypto-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:18px;
-    margin-bottom:28px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+margin-bottom:25px;
 }
 
 .crypto-card{
-    background:#101010;
-    border:1px solid #222;
-    border-radius:20px;
-    padding:24px;
-    cursor:pointer;
+background:#111;
+border:1px solid #222;
+border-radius:18px;
+padding:22px;
+cursor:pointer;
+text-align:center;
+transition:.2s;
 }
 
 .crypto-card.active{
-    border-color:#ff2e2e;
-    background:#170909;
+border-color:#00ff80;
+background:#102018;
 }
 
-.amount-box{
-    height:65px;
-    background:#101010;
-    border:1px solid #222;
-    border-radius:18px;
-    display:flex;
-    align-items:center;
-    padding:0 22px;
-    margin-bottom:20px;
+.crypto-card h3{
+font-size:24px;
+margin-bottom:5px;
 }
 
-.amount-box input{
-    flex:1;
-    background:none;
-    border:none;
-    outline:none;
-    color:white;
-    font-size:22px;
-    margin:0;
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:12px;
+margin-bottom:20px;
 }
 
-.quick-amounts{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-bottom:22px;
+.quick-grid button{
+height:50px;
+background:#111;
+border:1px solid #222;
+border-radius:12px;
+color:white;
+font-weight:700;
 }
 
-.quick-amounts button{
-    height:55px;
-    background:#111;
-    border:1px solid #222;
-    border-radius:14px;
-    color:white;
-    font-weight:700;
-    cursor:pointer;
+.quick-grid button:hover{
+background:#ff2d2d;
 }
 
-.request-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:20px;
-    flex-wrap:wrap;
+.topup-btn{
+width:100%;
+height:58px;
+background:#0f7f3c;
+font-size:16px;
 }
 
-.request-actions{
-    display:flex;
-    gap:10px;
+.request-box{
+background:#0b0b0b;
+border:1px solid #1f1f1f;
+border-radius:22px;
+padding:25px;
+margin-bottom:20px;
 }
 
-.request-actions button{
-    width:auto;
-    padding:0 18px;
+.request-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+flex-wrap:wrap;
 }
 
-@media(max-width:768px){
+.request-buttons{
+display:flex;
+gap:10px;
+}
 
-    .hero{
-        flex-direction:column;
-        text-align:center;
-    }
+.approve-btn{
+background:#16a34a;
+height:48px;
+padding:0 20px;
+}
 
-    .hero h1{
-        font-size:42px;
-    }
+.reject-btn{
+background:#ff2d2d;
+height:48px;
+padding:0 20px;
+}
 
-    .navbar{
-        height:auto;
-        padding:20px;
-        flex-direction:column;
-        gap:15px;
-    }
+@media(max-width:700px){
 
-    .nav-right{
-        justify-content:center;
-    }
+.quick-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.section-title{
+font-size:38px;
+}
 
 }
 
@@ -394,211 +350,230 @@ input{
 
 <div id="loginPage" class="login-screen">
 
-    <div class="login-box">
+<div class="login-box">
 
-        <h1 class="logo-login">i5s</h1>
+<div class="logo">i5s</div>
 
-        <p class="login-sub">
-            Secure Digital Store Login
-        </p>
+<div class="login-sub">
+Secure Digital Store Login
+</div>
 
-        <input type="text" id="username" placeholder="Username">
+<input type="text" id="username" placeholder="Username">
 
-        <input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password">
 
-        <button class="login-btn" onclick="login()">
-            Login
-        </button>
+<button class="login-btn" onclick="login()">
+Login
+</button>
 
-        <div class="register-btn" onclick="register()">
-            Create Account
-        </div>
+<button class="register-btn" onclick="register()">
+Create Account
+</button>
 
-    </div>
+</div>
 
 </div>
 
 <div id="mainSite" class="hidden">
 
-    <div class="navbar">
+<div class="navbar">
 
-        <div class="logo">i5s</div>
+<div class="nav-logo">
+i5s
+</div>
 
-        <div class="nav-right">
+<div class="nav-right">
 
-            <div class="balance">
-                Balance: $
-                <span id="balance">0</span>
-            </div>
+<div class="balance">
+Balance: $
+<span id="balance">0</span>
+</div>
 
-            <button class="nav-btn active-btn" onclick="showPage('purchase',this)">
-                Purchase
-            </button>
+<button class="nav-btn" onclick="showPage('shop')">
+Shop
+</button>
 
-            <button class="nav-btn" onclick="showPage('topup',this)">
-                Top Up
-            </button>
+<button class="nav-btn" onclick="showPage('inventory')">
+Inventory
+</button>
 
-            <button class="nav-btn" onclick="showPage('inventory',this)">
-                Inventory
-            </button>
+<button class="nav-btn" onclick="showPage('topup')">
+Top Up
+</button>
 
-            <button id="adminBtn" class="nav-btn hidden" onclick="showPage('admin',this)">
-                Admin
-            </button>
+<button id="adminButton"
+class="nav-btn hidden"
+onclick="showPage('admin')">
+Admin
+</button>
 
-            <button class="logout-btn" onclick="logout()">
-                Logout
-            </button>
+<button class="nav-btn" onclick="logout()">
+Logout
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div id="purchase" class="page active-page">
+<div id="shop" class="page active-page">
 
-        <div class="hero">
+<h1 class="section-title">
+Products
+</h1>
 
-            <div>
+<div class="product-grid">
 
-                <h1>Premium Digital Store</h1>
+<div class="product-card">
+<h2>1D</h2>
+<div class="price">$10</div>
+<button class="buy-btn"
+onclick="buyProduct(10,'1D Access')">
+Purchase
+</button>
+</div>
 
-                <p>
-                    Modern black & red premium dashboard with balance system,
-                    inventory and admin approvals.
-                </p>
+<div class="product-card">
+<h2>3D</h2>
+<div class="price">$25</div>
+<button class="buy-btn"
+onclick="buyProduct(25,'3D Access')">
+Purchase
+</button>
+</div>
 
-            </div>
+<div class="product-card">
+<h2>5D</h2>
+<div class="price">$40</div>
+<button class="buy-btn"
+onclick="buyProduct(40,'5D Access')">
+Purchase
+</button>
+</div>
 
-            <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<div class="product-card">
+<h2>7D</h2>
+<div class="price">$60</div>
+<button class="buy-btn"
+onclick="buyProduct(60,'7D Access')">
+Purchase
+</button>
+</div>
 
-        </div>
+<div class="product-card">
+<h2>10D</h2>
+<div class="price">$85</div>
+<button class="buy-btn"
+onclick="buyProduct(85,'10D Access')">
+Purchase
+</button>
+</div>
 
-        <h2 class="section-title">Products</h2>
+<div class="product-card">
+<h2>Permanent</h2>
+<div class="price">$150</div>
+<button class="buy-btn"
+onclick="buyProduct(150,'Permanent Access')">
+Purchase
+</button>
+</div>
 
-        <div class="product-grid">
+</div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>1D</h3>
-                <div class="price">$10</div>
-                <button class="buy-btn" onclick="buyProduct(10,'1D Access')">
-                    Purchase
-                </button>
-            </div>
+</div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>3D</h3>
-                <div class="price">$25</div>
-                <button class="buy-btn" onclick="buyProduct(25,'3D Access')">
-                    Purchase
-                </button>
-            </div>
+<div id="inventory" class="page">
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>5D</h3>
-                <div class="price">$40</div>
-                <button class="buy-btn" onclick="buyProduct(40,'5D Access')">
-                    Purchase
-                </button>
-            </div>
+<h1 class="section-title">
+Inventory
+</h1>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>7D</h3>
-                <div class="price">$60</div>
-                <button class="buy-btn" onclick="buyProduct(60,'7D Access')">
-                    Purchase
-                </button>
-            </div>
+<div id="inventoryGrid"
+class="inventory-grid"></div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>10D</h3>
-                <div class="price">$85</div>
-                <button class="buy-btn" onclick="buyProduct(85,'10D Access')">
-                    Purchase
-                </button>
-            </div>
+</div>
 
-            <div class="product-card">
-                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png">
-                <h3>Permanent</h3>
-                <div class="price">$150</div>
-                <button class="buy-btn" onclick="buyProduct(150,'Permanent Access')">
-                    Purchase
-                </button>
-            </div>
+<div id="topup" class="page">
 
-        </div>
+<div class="topup-box">
 
-    </div>
+<h1 class="section-title">
+Top Up Balance
+</h1>
 
-    <div id="topup" class="page">
+<div class="crypto-grid">
 
-        <div class="topup-container">
+<div class="crypto-card active">
+<h3>BTC</h3>
+<p>Bitcoin</p>
+</div>
 
-            <h1>Top Up Balance</h1>
+<div class="crypto-card">
+<h3>LTC</h3>
+<p>Litecoin</p>
+</div>
 
-            <p>
-                Create payment requests for admin approval
-            </p>
+<div class="crypto-card">
+<h3>USDT</h3>
+<p>Tether</p>
+</div>
 
-            <div class="crypto-grid">
+<div class="crypto-card">
+<h3>SOL</h3>
+<p>Solana</p>
+</div>
 
-                <div class="crypto-card active">BTC</div>
-                <div class="crypto-card">LTC</div>
-                <div class="crypto-card">USDT</div>
-                <div class="crypto-card">SOL</div>
+</div>
 
-            </div>
+<input type="number"
+id="topupAmount"
+placeholder="Enter Amount">
 
-            <div class="amount-box">
+<div class="quick-grid">
 
-                <span>$</span>
+<button onclick="setAmount(10)">
+$10
+</button>
 
-                <input type="number" id="topupAmount" placeholder="100">
+<button onclick="setAmount(25)">
+$25
+</button>
 
-                <span>USD</span>
+<button onclick="setAmount(50)">
+$50
+</button>
 
-            </div>
+<button onclick="setAmount(100)">
+$100
+</button>
 
-            <div class="quick-amounts">
+<button onclick="setAmount(250)">
+$250
+</button>
 
-                <button onclick="setAmount(10)">$10</button>
-                <button onclick="setAmount(25)">$25</button>
-                <button onclick="setAmount(50)">$50</button>
-                <button onclick="setAmount(100)">$100</button>
-                <button onclick="setAmount(250)">$250</button>
-                <button onclick="setAmount(500)">$500</button>
+<button onclick="setAmount(500)">
+$500
+</button>
 
-            </div>
+</div>
 
-            <button class="create-payment-btn" onclick="createPaymentRequest()">
-                Create Payment Request
-            </button>
+<button class="topup-btn"
+onclick="createRequest()">
+Create Payment Request
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
-    <div id="inventory" class="page">
+<div id="admin" class="page">
 
-        <h2 class="section-title">Inventory</h2>
+<h1 class="section-title">
+Admin Requests
+</h1>
 
-        <div id="inventoryGrid" class="inventory-grid"></div>
+<div id="requestContainer"></div>
 
-    </div>
-
-    <div id="admin" class="page">
-
-        <h2 class="section-title">Admin Requests</h2>
-
-        <div id="requestsContainer"></div>
-
-    </div>
+</div>
 
 </div>
 
@@ -616,430 +591,554 @@ JSON.parse(localStorage.getItem("requests")) || [];
 let currentUser =
 JSON.parse(localStorage.getItem("currentUser")) || null;
 
+// 관리자 생성
 if(!users.find(u => u.username === ADMIN_USERNAME)){
 
-    users.push({
-        username:ADMIN_USERNAME,
-        password:ADMIN_PASSWORD,
-        balance:0,
-        inventory:[]
-    });
+users.push({
+username:ADMIN_USERNAME,
+password:ADMIN_PASSWORD,
+balance:999999,
+inventory:[]
+});
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
 
 }
 
-window.onload = () => {
+// 자동 로그인
+window.onload = function(){
 
-    if(currentUser){
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
-        showSite();
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    }
+currentUser =
+JSON.parse(localStorage.getItem("currentUser")) || null;
+
+if(currentUser){
+
+showMain();
+
+}
 
 };
 
-function register(){
+// 실시간 동기화
+window.addEventListener("storage", function(){
 
-    const username =
-    document.getElementById("username").value.trim();
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    const password =
-    document.getElementById("password").value.trim();
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
-    if(!username || !password){
+if(currentUser){
 
-        alert("Fill all fields");
-        return;
+const updatedUser =
+users.find(u => u.username === currentUser.username);
 
-    }
+if(updatedUser){
 
-    const exists =
-    users.find(u => u.username === username);
+currentUser = updatedUser;
 
-    if(exists){
-
-        alert("Username already exists");
-        return;
-
-    }
-
-    const user = {
-
-        username,
-        password,
-        balance:0,
-        inventory:[]
-
-    };
-
-    users.push(user);
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    alert("Account Created");
+updateBalance();
 
 }
 
-function login(){
-
-    const username =
-    document.getElementById("username").value.trim();
-
-    const password =
-    document.getElementById("password").value.trim();
-
-    const user =
-    users.find(u =>
-        u.username === username &&
-        u.password === password
-    );
-
-    if(!user){
-
-        alert("Invalid Account");
-        return;
-
-    }
-
-    currentUser = user;
-
-    localStorage.setItem(
-        "currentUser",
-        JSON.stringify(currentUser)
-    );
-
-    showSite();
-
 }
 
-function showSite(){
-
-    document.getElementById("loginPage")
-    .classList.add("hidden");
-
-    document.getElementById("mainSite")
-    .classList.remove("hidden");
-
-    updateBalance();
-
-    renderInventory();
-
-    renderRequests();
-
-    if(
-        currentUser.username === ADMIN_USERNAME &&
-        currentUser.password === ADMIN_PASSWORD
-    ){
-
-        document.getElementById("adminBtn")
-        .classList.remove("hidden");
-
-    }
-
-}
-
-function logout(){
-
-    localStorage.removeItem("currentUser");
-
-    location.reload();
-
-}
-
-function updateBalance(){
-
-    document.getElementById("balance")
-    .innerText = currentUser.balance;
-
-}
-
-function saveUser(){
-
-    users = users.map(u => {
-
-        if(u.username === currentUser.username){
-
-            return currentUser;
-
-        }
-
-        return u;
-
-    });
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    localStorage.setItem(
-        "currentUser",
-        JSON.stringify(currentUser)
-    );
-
-}
-
-function showPage(page,btn){
-
-    document
-    .querySelectorAll(".page")
-    .forEach(p => {
-
-        p.classList.remove("active-page");
-
-    });
-
-    document
-    .getElementById(page)
-    .classList.add("active-page");
-
-    document
-    .querySelectorAll(".nav-btn")
-    .forEach(b => {
-
-        b.classList.remove("active-btn");
-
-    });
-
-    btn.classList.add("active-btn");
-
-}
-
-function buyProduct(price,name){
-
-    if(currentUser.balance < price){
-
-        alert("Not enough balance");
-        return;
-
-    }
-
-    currentUser.balance -= price;
-
-    currentUser.inventory.push(name);
-
-    saveUser();
-
-    updateBalance();
-
-    renderInventory();
-
-    alert("Purchased: " + name);
-
-}
-
-function renderInventory(){
-
-    const grid =
-    document.getElementById("inventoryGrid");
-
-    grid.innerHTML = "";
-
-    if(currentUser.inventory.length === 0){
-
-        grid.innerHTML = `
-        <div class="inventory-item">
-            <h3>Empty</h3>
-            <p>No items purchased yet.</p>
-        </div>
-        `;
-
-        return;
-
-    }
-
-    currentUser.inventory.forEach(item => {
-
-        grid.innerHTML += `
-        <div class="inventory-item">
-            <h3>${item}</h3>
-            <p>Purchased Successfully</p>
-        </div>
-        `;
-
-    });
-
-}
-
-document.querySelectorAll(".crypto-card")
-.forEach(card => {
-
-    card.addEventListener("click",() => {
-
-        document
-        .querySelectorAll(".crypto-card")
-        .forEach(c => {
-
-            c.classList.remove("active");
-
-        });
-
-        card.classList.add("active");
-
-    });
+renderRequests();
 
 });
 
+// 회원가입
+function register(){
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+const username =
+document.getElementById("username").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
+
+if(username === "" || password === ""){
+
+alert("Fill all fields");
+return;
+
+}
+
+const exists =
+users.find(
+u =>
+u.username.toLowerCase() ===
+username.toLowerCase()
+);
+
+if(exists){
+
+alert("Username already exists");
+return;
+
+}
+
+users.push({
+
+username:username,
+password:password,
+balance:0,
+inventory:[]
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+alert("Account Created Successfully");
+
+document.getElementById("username").value = "";
+document.getElementById("password").value = "";
+
+}
+
+// 로그인
+function login(){
+
+users =
+JSON.parse(localStorage.getItem("users")) || [];
+
+const username =
+document.getElementById("username").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
+
+const foundUser =
+users.find(
+u =>
+u.username === username &&
+u.password === password
+);
+
+if(!foundUser){
+
+alert("Invalid Account");
+return;
+
+}
+
+currentUser = foundUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+showMain();
+
+}
+
+// 메인 표시
+function showMain(){
+
+document.getElementById("loginPage")
+.classList.add("hidden");
+
+document.getElementById("mainSite")
+.classList.remove("hidden");
+
+updateBalance();
+
+renderInventory();
+
+renderRequests();
+
+if(currentUser.username === ADMIN_USERNAME){
+
+document.getElementById("adminButton")
+.classList.remove("hidden");
+
+}
+
+}
+
+// 로그아웃
+function logout(){
+
+localStorage.removeItem("currentUser");
+
+location.reload();
+
+}
+
+// 잔액 업데이트
+function updateBalance(){
+
+document.getElementById("balance").innerText =
+currentUser.balance;
+
+}
+
+// 유저 저장
+function saveUsers(){
+
+users = users.map(u => {
+
+if(u.username === currentUser.username){
+
+return currentUser;
+
+}
+
+return u;
+
+});
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+}
+
+// 페이지 이동
+function showPage(page){
+
+document.querySelectorAll(".page")
+.forEach(p => {
+
+p.classList.remove("active-page");
+
+});
+
+document.getElementById(page)
+.classList.add("active-page");
+
+if(page === "admin"){
+
+renderRequests();
+
+}
+
+}
+
+// 상품 구매
+function buyProduct(price,name){
+
+if(currentUser.balance < price){
+
+alert("Not enough balance");
+return;
+
+}
+
+currentUser.balance -= price;
+
+currentUser.inventory.push(name);
+
+saveUsers();
+
+updateBalance();
+
+renderInventory();
+
+alert(name + " Purchased");
+
+}
+
+// 인벤토리 표시
+function renderInventory(){
+
+const grid =
+document.getElementById("inventoryGrid");
+
+grid.innerHTML = "";
+
+if(currentUser.inventory.length === 0){
+
+grid.innerHTML = `
+<div class="inventory-item">
+<h3>Empty</h3>
+<p>No items purchased yet.</p>
+</div>
+`;
+
+return;
+
+}
+
+currentUser.inventory.forEach(item => {
+
+grid.innerHTML += `
+<div class="inventory-item">
+<h3>${item}</h3>
+<p>Purchased Successfully</p>
+</div>
+`;
+
+});
+
+}
+
+// 코인 선택
+document.querySelectorAll(".crypto-card")
+.forEach(card => {
+
+card.addEventListener("click", function(){
+
+document.querySelectorAll(".crypto-card")
+.forEach(c => {
+
+c.classList.remove("active");
+
+});
+
+card.classList.add("active");
+
+});
+
+});
+
+// 금액 버튼
 function setAmount(amount){
 
-    document.getElementById("topupAmount")
-    .value = amount;
+document.getElementById("topupAmount").value =
+amount;
 
 }
 
-function createPaymentRequest(){
+// 충전 요청 생성
+function createRequest(){
 
-    const amount =
-    document.getElementById("topupAmount").value;
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    if(!amount || amount <= 0){
+const amount =
+document.getElementById("topupAmount").value;
 
-        alert("Enter valid amount");
-        return;
+if(amount === "" || Number(amount) <= 0){
 
-    }
-
-    requests.push({
-
-        id:Date.now(),
-        user:currentUser.username,
-        amount:Number(amount)
-
-    });
-
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
-
-    renderRequests();
-
-    alert("Payment Request Created");
+alert("Enter valid amount");
+return;
 
 }
 
+const selectedCrypto =
+document.querySelector(".crypto-card.active h3")
+.innerText;
+
+requests.push({
+
+id:Date.now(),
+
+user:currentUser.username,
+
+amount:Number(amount),
+
+crypto:selectedCrypto,
+
+status:"Pending",
+
+created:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+alert("Payment Request Created");
+
+document.getElementById("topupAmount").value = "";
+
+renderRequests();
+
+}
+
+// 관리자 패널 표시
 function renderRequests(){
 
-    const container =
-    document.getElementById("requestsContainer");
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    if(!container){
+const container =
+document.getElementById("requestContainer");
 
-        return;
+if(!container){
 
-    }
-
-    container.innerHTML = "";
-
-    requests.forEach(req => {
-
-        container.innerHTML += `
-
-        <div class="request-box">
-
-            <div class="request-row">
-
-                <div>
-
-                    <h2>$${req.amount}</h2>
-
-                    <p>${req.user}</p>
-
-                </div>
-
-                <div class="request-actions">
-
-                    <button
-                    class="approve-btn"
-                    onclick="approveRequest(${req.id})">
-
-                    Approve
-
-                    </button>
-
-                    <button
-                    class="reject-btn"
-                    onclick="rejectRequest(${req.id})">
-
-                    Reject
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
+return;
 
 }
 
+container.innerHTML = "";
+
+// 최신순 정렬
+requests.sort((a,b)=>b.id-a.id);
+
+if(requests.length === 0){
+
+container.innerHTML = `
+<div class="request-box">
+<h2>No Requests</h2>
+<p>No payment requests found.</p>
+</div>
+`;
+
+return;
+
+}
+
+requests.forEach(req => {
+
+container.innerHTML += `
+
+<div class="request-box">
+
+<div class="request-top">
+
+<div>
+
+<h2>$${req.amount}</h2>
+
+<p><b>User:</b> ${req.user}</p>
+
+<p><b>Crypto:</b> ${req.crypto}</p>
+
+<p><b>Status:</b> ${req.status}</p>
+
+<p>${req.created}</p>
+
+</div>
+
+<div class="request-buttons">
+
+<button
+class="approve-btn"
+onclick="approveRequest(${req.id})">
+
+Approve
+
+</button>
+
+<button
+class="reject-btn"
+onclick="rejectRequest(${req.id})">
+
+Reject
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+// 승인
 function approveRequest(id){
 
-    const req =
-    requests.find(r => r.id === id);
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    if(!req){
+users =
+JSON.parse(localStorage.getItem("users")) || [];
 
-        return;
+const req =
+requests.find(r => r.id === id);
 
-    }
+if(!req){
 
-    const user =
-    users.find(u => u.username === req.user);
-
-    user.balance += Number(req.amount);
-
-    if(currentUser.username === user.username){
-
-        currentUser.balance = user.balance;
-
-        updateBalance();
-
-    }
-
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
-    );
-
-    requests =
-    requests.filter(r => r.id !== id);
-
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
-
-    renderRequests();
-
-    alert("Approved");
+alert("Request Not Found");
+return;
 
 }
 
+const targetUser =
+users.find(u => u.username === req.user);
+
+if(!targetUser){
+
+alert("User Not Found");
+return;
+
+}
+
+// 잔액 추가
+targetUser.balance += Number(req.amount);
+
+// users 저장
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+// 현재 로그인 유저 업데이트
+if(currentUser.username === targetUser.username){
+
+currentUser = targetUser;
+
+localStorage.setItem(
+"currentUser",
+JSON.stringify(currentUser)
+);
+
+updateBalance();
+
+}
+
+// 요청 삭제
+requests =
+requests.filter(r => r.id !== id);
+
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
+
+renderRequests();
+
+alert("Approved Successfully");
+
+}
+
+// 거절
 function rejectRequest(id){
 
-    requests =
-    requests.filter(r => r.id !== id);
+requests =
+JSON.parse(localStorage.getItem("requests")) || [];
 
-    localStorage.setItem(
-        "requests",
-        JSON.stringify(requests)
-    );
+requests =
+requests.filter(r => r.id !== id);
 
-    renderRequests();
+localStorage.setItem(
+"requests",
+JSON.stringify(requests)
+);
 
-    alert("Rejected");
+renderRequests();
+
+alert("Rejected");
 
 }
 
